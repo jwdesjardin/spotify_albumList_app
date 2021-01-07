@@ -1,0 +1,35 @@
+{
+  "name": "spotify_albumlist_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwdesjardin/spotify_albumList_app.git"
+  },
+  "author": "joey desjardins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jwdesjardin/spotify_albumList_app/issues"
+  },
+  "homepage": "https://github.com/jwdesjardin/spotify_albumList_app#readme",
+  "dependencies": {
+    "basic-auth": "^2.0.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.3.0",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0",
+    "sqlite": "^4.0.19"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
