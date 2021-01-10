@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const Courses = ({ history }) => {
+const AlbumLists = ({ history }) => {
 	const [ playlists, setPlaylists ] = useState([]);
 
 	useEffect(
@@ -63,4 +63,4 @@ const Courses = ({ history }) => {
 	);
 };
 
-export default Courses;
+export default AlbumLists;

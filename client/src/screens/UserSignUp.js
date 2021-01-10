@@ -6,9 +6,7 @@ const UserSignUp = props => {
 	const { actions } = useContext(AuthContext);
 	const [ errors, setErrors ] = useState([]);
 
-	const firstNameInput = useRef('');
-	const lastNameInput = useRef('');
-	const emailInput = useRef('');
+	const usernameInput = useRef('');
 	const passwordInput = useRef('');
 	const confirmPasswordInput = useRef('');
 
@@ -22,9 +20,7 @@ const UserSignUp = props => {
 
 		// shape body object from user input
 		const body = {
-			firstName: firstNameInput.current.value,
-			lastName: lastNameInput.current.value,
-			emailAddress: emailInput.current.value,
+			username: usernameInput.current.value,
 			password: confirmPasswordInput.current.value
 		};
 
@@ -37,7 +33,10 @@ const UserSignUp = props => {
 				setErrors([ ...res ]);
 				// if no response, sign in with current credentials and redirect to login
 			} else {
-				await actions.signIn(emailInput.current.value, confirmPasswordInput.current.value);
+				await actions.signIn(
+					usernameInput.current.value,
+					confirmPasswordInput.current.value
+				);
 				props.history.push('/');
 			}
 			// server error for any error not already caught and returned
@@ -66,29 +65,11 @@ const UserSignUp = props => {
 					<form>
 						<div>
 							<input
-								id='firstName'
-								name='firstName'
+								id='username'
+								name='username'
 								type='text'
-								placeholder='First Name'
-								ref={firstNameInput}
-							/>
-						</div>
-						<div>
-							<input
-								id='lastName'
-								name='lastName'
-								type='text'
-								placeholder='Last Name'
-								ref={lastNameInput}
-							/>
-						</div>
-						<div>
-							<input
-								id='emailAddress'
-								name='emailAddress'
-								type='text'
-								placeholder='Email Address'
-								ref={emailInput}
+								placeholder='Username'
+								ref={usernameInput}
 							/>
 						</div>
 						<div>

@@ -81,7 +81,22 @@ router.get(
 	asyncHandler(async (req, res) => {
 		//Returns the album (including the user that owns the album) for the provided album ID
 		const album = await Album.findByPk(req.params.id, {
-			attributes: { exclude: [ 'createdAt', 'updatedAt' ] }
+			attributes: {
+				exclude: [ 'createdAt', 'updatedAt' ]
+			},
+			include: [
+				{
+					model: Playlist,
+					include: [
+						{
+							model: User
+						},
+						{
+							model: Album
+						}
+					]
+				}
+			]
 		});
 		if (album) {
 			res.status(200).json(album);

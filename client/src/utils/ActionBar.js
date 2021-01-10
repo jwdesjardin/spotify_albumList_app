@@ -52,6 +52,9 @@ const ActionBar = ({ playlist, history }) => {
 							<Link className='button' onClick={onDeleteClick} to='/'>
 								Delete Playlist
 							</Link>
+							<Link className='button' to={`/playlists/${playlist.id}/update`}>
+								Edit Playlist
+							</Link>
 						</span>
 					)}
 					<Link className='button button-secondary' to='/'>

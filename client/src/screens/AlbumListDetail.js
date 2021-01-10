@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import ReactMarkdown from 'react-markdown';
 import ActionBar from '../utils/ActionBar';
+import { Link } from 'react-router-dom';
 
-const CourseDetail = props => {
+const AlbumListDetail = props => {
 	const [ playlist, setPlaylist ] = useState({});
 	const id = props.match.params.id;
 
@@ -48,27 +48,21 @@ const CourseDetail = props => {
 						<div className='course--description'>
 							{playlist.Albums &&
 								playlist.Albums.map(album => (
-									<div key={album.id}>
-										<img src={album.img_url} alt='' />
-										<p>Title: {album.title}</p>
-										<p>Artist: {album.artist}</p>
-										<p>Year: {album.year}</p>
-									</div>
+									<Link key={album.id} to={`/album/${album.id}`}>
+										<div
+											style={{
+												border: '2px solid black',
+												padding: '1rem',
+												margin: '.2rem'
+											}}
+										>
+											<img src={album.img_url} alt='' />
+											<p>Title: {album.title}</p>
+											<p>Artist: {album.artist}</p>
+											<p>Year: {album.year}</p>
+										</div>
+									</Link>
 								))}
-						</div>
-					</div>
-
-					<div className='grid-25 grid-right'>
-						<div className='course--stats'>
-							<ul className='course--stats--list'>
-								<li className='course--stats--list--item'>
-									<h4>Estimated Time</h4>
-									<h3 />
-								</li>
-								<li className='course--stats--list--item'>
-									<h4>Materials Needed</h4>
-								</li>
-							</ul>
 						</div>
 					</div>
 				</div>
@@ -77,4 +71,4 @@ const CourseDetail = props => {
 	);
 };
 
-export default CourseDetail;
+export default AlbumListDetail;

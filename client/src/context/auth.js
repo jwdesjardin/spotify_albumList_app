@@ -16,9 +16,9 @@ export const Provider = props => {
 		localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null
 	);
 
-	const signIn = async (email, password) => {
+	const signIn = async (username, password) => {
 		// create the config object for authorization
-		const credentials = btoa(email + ':' + password);
+		const credentials = btoa(username + ':' + password);
 		const basicAuth = 'Basic ' + credentials;
 		const config = {
 			headers: {
