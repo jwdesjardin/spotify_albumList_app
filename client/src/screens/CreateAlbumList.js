@@ -3,7 +3,7 @@ import { AuthContext } from '../context/auth';
 import axios from 'axios';
 import AlbumSearch from '../components/AlbumSearch';
 import StagedAlbums from '../components/StagedAlbums';
-
+import ActionBar from '../components/layout/ActionBar';
 const CreateAlbumList = props => {
 	const { authUser, userPassword } = useContext(AuthContext);
 
@@ -49,7 +49,9 @@ const CreateAlbumList = props => {
 					console.log('404');
 					const body = {
 						id: album.id,
-						img_url: album.images[2] ? album.images[2].url : '',
+						img_url_1: album.images[0] ? album.images[0].url : null,
+						img_url_2: album.images[1] ? album.images[1].url : null,
+						img_url_3: album.images[2] ? album.images[2].url : null,
 						artist: album.artists[0]['name'],
 						year: album.release_date.substring(0, 4),
 						title: album.name
@@ -113,6 +115,7 @@ const CreateAlbumList = props => {
 
 	return (
 		<Fragment>
+			<ActionBar playlist={{ UserId: null }} history={props.history} />
 			<div className='grid-66'>
 				<div className='course--header'>
 					<h4 className='course--label'>Title</h4>
@@ -139,13 +142,14 @@ const CreateAlbumList = props => {
 
 			<StagedAlbums removeAlbumFromStage={removeAlbumFromStage} stagedAlbums={stagedAlbums} />
 
-			<div className='grid-100 pad-bottom'>
+			<div className='flex'>
 				<button className='button button-primary' onClick={createAlbumListHandler}>
 					Create AlbumList
 				</button>
-				<button className='button button-secondary' onClick={cancelHandler}>
-					Cancel
-				</button>
+
+				<p>
+					<em>Title - "{albumTitle}"</em>
+				</p>
 			</div>
 		</Fragment>
 	);

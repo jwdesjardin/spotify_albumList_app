@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../context/auth';
+import { AuthContext } from '../../context/auth';
 import axios from 'axios';
+import styles from './ActionBar.module.css';
 
 const ActionBar = ({ playlist, history }) => {
 	const { authUser, userPassword } = useContext(AuthContext);
@@ -42,25 +43,23 @@ const ActionBar = ({ playlist, history }) => {
 	};
 
 	return (
-		<div className='actions--bar'>
-			<div className='bounds'>
-				<div className='grid-100'>
-					{/* if user is lgged in and they own this course show update and delete */}
-					{authUser &&
-					authUser.id === playlist.UserId && (
-						<span>
-							<Link className='button' onClick={onDeleteClick} to='/'>
-								Delete Playlist
-							</Link>
-							<Link className='button' to={`/playlists/${playlist.id}/update`}>
-								Edit Playlist
-							</Link>
-						</span>
-					)}
-					<Link className='button button-secondary' to='/'>
-						Return to List
-					</Link>
-				</div>
+		<div className={styles.actionBarContainer}>
+			<div className={styles.flexStartAlign}>
+				{/* if user is lgged in and they own this course show update and delete */}
+				{authUser &&
+				authUser.id === playlist.UserId && (
+					<span>
+						<Link className='btn btn-primary' onClick={onDeleteClick} to='/'>
+							Delete Playlist
+						</Link>
+						<Link className='btn btn-primary' to={`/playlists/${playlist.id}/update`}>
+							Edit Playlist
+						</Link>
+					</span>
+				)}
+				<Link className='btn btn-secondary' to='/'>
+					Return to List
+				</Link>
 			</div>
 		</div>
 	);

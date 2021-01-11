@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,mBAAmB,CAAC;EAClB,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,IAAK;CAQlB;;AAVD,AAGE,mBAHiB,CAGjB,KAAK,CAAA;EACH,OAAO,EAAE,IAAI;CACd;;AALH,AAME,mBANiB,CAMjB,GAAG,CAAC;EACF,aAAa,EAAE,GAAG;EAClB,aAAa,EAAE,IAAI;CACpB",
+    "sources": [
+        "AlbumDetail.module.scss"
+    ],
+    "names": [],
+    "file": "AlbumDetail.module.css"
+}

@@ -1,0 +1,15 @@
+.actionBarContainer {
+  background-color: #222;
+  padding: .8rem;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  
+}
+
+.flexStartAlign {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}

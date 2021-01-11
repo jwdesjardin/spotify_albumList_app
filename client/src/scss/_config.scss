@@ -1,0 +1,60 @@
+// _config.scss
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800&display=swap');
+
+$font-stack: 'Montserrat', sans-serif;
+$primary-color: #2967c5;
+$secondary-color: #97e3fa;
+$icon-color:  rgb(104, 248, 104);
+$menu-overlay-color:   #2967c5;
+$light-color: #f0eefc;
+$dark-color: #292929;
+$light-text: #ebebeb;
+$dark-text: #141414;
+
+$container-lg: 70rem;
+$container-md: 40rem;
+$global-transistion: transform 50ms linear;
+$menu-transistion-speed: transform 50ms linear ;
+$breakpoint-sm: 450px;
+$breakpoint-md: 900px;
+
+// Set text color based on bg
+@function set-text-color($color) {
+  @if(lightness($color) > 70) {
+    @return $dark-text;
+  } @else {
+    @return $light-text;
+  }
+}
+
+// Set background & text color
+@mixin set-background($color) {
+  background-color: $color;
+  color: set-text-color($color)
+}
+
+@mixin flex() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin container($width) {
+  max-width: $width;
+  margin: 0 auto;
+}
+
+p{
+  margin: .2rem 0 .2rem .5rem;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6{
+  margin: .5rem 0 .5rem 0;
+  padding: 0;
+}
+
+
+
+

@@ -1,0 +1,21 @@
+.albumContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gridSplit{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 1rem;
+}
+
+.albumText {
+  max-width: 10rem;
+  line-height: 1;
+}
+
+.title {
+  font-size: 1.6rem;
+  margin-bottom: .5rem;
+}

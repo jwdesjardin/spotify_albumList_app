@@ -1,0 +1,15 @@
+:root {
+  --container-lg: 70rem;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: var(--container-lg);
+}
+
+.button {
+ background-color: coral;
+ padding: .5rem 1.2rem;
+ border-radius: 5px;
+ color: white;
+}

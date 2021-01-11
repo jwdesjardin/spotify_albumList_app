@@ -1,0 +1,25 @@
+.navContainer {
+ background-color:bisque;
+ padding: 1rem;
+}
+
+.navFlex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navLinks{
+
+ 
+}
+
+.navLinks .navGreeting {
+  border: 1px solid black;
+  margin: 0 1rem;
+}
+
+.navLinks a {
+  border: 1px solid black;
+  margin: 0 1rem;
+}

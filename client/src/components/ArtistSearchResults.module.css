@@ -1,0 +1,28 @@
+.grid{
+  display: flex;
+  overflow-x: scroll;
+  max-width: 90rem;
+}
+
+.gridItems {
+  box-shadow: 1px 1px 2px black;
+  padding: 1rem;
+  margin: .5rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 120ms linear;
+  
+}
+.gridItems:focus{
+  outline: none;
+}
+.gridItems:hover{
+  transform: scale(.98)
+}
+
+.gridItems > img {
+  border-radius: 50%;
+}

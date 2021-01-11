@@ -1,0 +1,12 @@
+.card {
+  box-shadow: 1px 1px 2px #222;
+  padding: 1.25rem;
+  background-color: $light-color;
+  color: $dark-text;
+  border-radius: 10px;
+  transition: all 120ms linear;
+  &:hover {
+    transform: scale(.98);
+    box-shadow: 2px 2px 5px #222 ;
+  }
+}

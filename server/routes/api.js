@@ -7,6 +7,8 @@ const userValidator = require('./middleware/userValidation');
 const courseValidator = require('./middleware/courseValidation');
 const authorization = require('./middleware/authorization');
 const bcrypt = require('bcryptjs');
+const axios = require('axios');
+const btoa = require('btoa');
 
 /* Handler function to wrap each route. */
 function asyncHandler(cb) {
@@ -25,6 +27,38 @@ router.get('/', (req, res) => {
 		message: 'Welcome to the REST API home page'
 	});
 });
+
+router.get(
+	'/spotify',
+	authorization,
+	asyncHandler(async (req, res) => {
+		try {
+			// create the config object for authorization
+			const { CLIENT_ID, SECRET } = process.env;
+			console.log('variable', CLIENT_ID, SECRET);
+			const credentials = btoa(CLIENT_ID + ':' + SECRET);
+			const basicAuth = 'Basic ' + credentials;
+			const config = {
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+					Authorization: basicAuth
+				}
+			};
+
+			const body = 'grant_type=client_credentials';
+
+			const { data } = await axios.post(
+				'https://accounts.spotify.com/api/token',
+				body,
+				config
+			);
+
+			res.json(data);
+		} catch (error) {
+			res.json({ msg: 'error getting token from spotify' });
+		}
+	})
+);
 
 /* GET  */
 router.get(

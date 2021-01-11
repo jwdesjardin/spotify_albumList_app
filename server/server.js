@@ -1,13 +1,14 @@
 // load modules
 const express = require('express');
 const morgan = require('morgan');
-var cors = require('cors');
+const cors = require('cors');
+const dotenv = require('dotenv');
 // variable to enable global error logging
 const enableGlobalErrorLogging = process.env.ENABLE_GLOBAL_ERROR_LOGGING === 'true';
 
 // create the Express app
 const app = express();
-
+dotenv.config();
 // setup morgan which gives us http request logging
 app.use(morgan('dev'));
 app.use(cors());

@@ -1,0 +1,51 @@
+// _buttons.scss
+.btn {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 8px 20px;
+  margin: 3px;
+  transition: $global-transistion;
+  &:hover {
+    transform: scale(.98);
+  }
+}
+
+.btn-primary {
+  @extend .btn;
+  @include set-background(lighten($primary-color, 15%));
+}
+
+.btn-secondary {
+  @extend .btn;
+  @include set-background($secondary-color);
+}
+
+.btn-dark {
+  @extend .btn;
+  @include set-background($dark-color);
+}
+
+.btn-outline-primary {
+  @extend .btn;
+  background-color: transparent;
+  border: 2px solid $primary-color;
+  color: $primary-color
+}
+
+.btn-outline-secondary {
+  @extend .btn;
+  background-color: transparent;
+  border: 2px solid $secondary-color;
+  color: $secondary-color
+}
+
+.btn-outline-dark {
+  @extend .btn;
+  background-color: transparent;
+  border: 2px solid $dark-color;
+  color: $dark-color
+}
+
+.btn-pill {
+  border-radius: 100px;
+}

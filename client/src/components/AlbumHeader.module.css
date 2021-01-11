@@ -1,0 +1,32 @@
+.albumHeaderContainer{
+  padding: 4rem;
+  background-color: steelblue;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.pageTitle{
+  font-size: 2.7rem;
+  margin: 0 0 1rem 1rem;
+}
+
+.flex{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.albumInfo{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.tracklist{
+  list-style: none;
+}
+
+.tracklist li a{
+  color: black;
+}
+
+

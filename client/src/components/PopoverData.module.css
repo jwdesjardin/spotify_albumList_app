@@ -1,0 +1,8 @@
+.tracklistContainer{
+  padding-right: 1rem;
+}
+
+.tracklist {
+  list-style: none;
+  padding: .5rem;
+}

@@ -37,37 +37,13 @@ export const Provider = props => {
 				localStorage.setItem('user', JSON.stringify(response.data));
 				localStorage.setItem('password', JSON.stringify(password));
 
-				//get spotify token and store in state
+				const { data } = await axios.get('http://localhost:5000/api/spotify', config);
 
-				// create the config object for authorization
-				const { CLIENT_ID, SECRET } = process.env;
-				console.log('variable', CLIENT_ID, SECRET);
-				// const credentials = btoa(
-				// 	'f743d193ba6347d98f05cc802f4358ea' + ':' + 'd417c250b9244c75a1aaa6c31846fb4d'
-				// );
-				const basicAuth =
-					'Basic ' +
-					'Zjc0M2QxOTNiYTYzNDdkOThmMDVjYzgwMmY0MzU4ZWE6ZDQxN2MyNTBiOTI0NGM3NWExYWFhNmMzMTg0NmZiNGQ=';
-				const config = {
-					headers: {
-						'Content-Type': 'application/x-www-form-urlencoded',
-						Authorization: basicAuth
-					}
-				};
-
-				const body = 'grant_type=client_credentials';
-
-				const { data } = await axios.post(
-					'https://accounts.spotify.com/api/token',
-					body,
-					config
-				);
-
+				console.log('setting token ', data.access_token);
 				const { access_token } = data;
-
 				setSpotifyToken(access_token);
 
-				localStorage.setItem('token', JSON.stringify(data.access_token));
+				localStorage.setItem('token', JSON.stringify(access_token));
 			}
 			// if error is unauthorized respond with error data
 		} catch (error) {

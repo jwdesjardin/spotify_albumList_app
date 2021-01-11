@@ -3,6 +3,7 @@ import { AuthContext } from '../context/auth';
 import axios from 'axios';
 import AlbumSearch from '../components/AlbumSearch';
 import StagedAlbums from '../components/StagedAlbums';
+import ActionBar from '../components/layout/ActionBar';
 
 const UpdatePlaylists = ({ history, match }) => {
 	const id = match.params.id;
@@ -98,6 +99,7 @@ const UpdatePlaylists = ({ history, match }) => {
 
 	return (
 		<div>
+			<ActionBar playlist={{ UserId: null }} history={history} />
 			{playlist && (
 				<div className='bounds course--detail'>
 					<div className='grid-66'>

@@ -1,0 +1,91 @@
+// _mobile.scss
+@media (max-width: $breakpoint-md) {
+  
+  .hero {
+    height: 300px;
+    padding-bottom: 20px;
+    &-content {
+      text-align: center;
+
+      img {
+        display: none;
+      }
+    }
+  }
+
+  .projects {
+    .card {
+      @include flex;
+      flex-direction: column;
+      
+    }
+
+  }
+
+  .aboutMe {
+    .container{
+      @include flex;
+      flex-direction: column;
+      .rightDiv{
+        img{
+          border-radius: 50%;
+        }
+      }
+    }
+    
+  }
+
+  .treehouse {
+    .container{
+      .grid{
+        .treehouse-projects {
+          grid-template-columns: repeat(2, 1fr);
+          
+        }
+      }
+    }
+      
+    }
+  
+}
+
+@media (max-width: $breakpoint-sm) {
+  .menu-wrap{
+    .menu{
+      >div{
+        >div{
+          >img{
+            max-width: 10rem;
+            max-height: 10rem;
+          }
+        }
+      }
+    }
+  }
+
+
+  .aboutMe {
+    .container{
+      .rightDiv{
+        img{
+          max-width: 15rem;
+        }
+      }
+    }
+    
+  }
+
+
+  .treehouse {
+    .container{
+      .grid{
+        .treehouse-projects {
+          @include flex;
+          flex-direction: column;
+          
+        }
+      }
+    }
+      
+    }
+}

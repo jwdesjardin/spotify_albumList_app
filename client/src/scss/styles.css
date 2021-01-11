@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800&display=swap");
+p {
+  margin: .2rem 0 .2rem .5rem;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: .5rem 0 .5rem 0;
+  padding: 0;
+}
+
+.card {
+  -webkit-box-shadow: 1px 1px 2px #222;
+          box-shadow: 1px 1px 2px #222;
+  padding: 1.25rem;
+  background-color: #f0eefc;
+  color: #141414;
+  border-radius: 10px;
+  -webkit-transition: all 120ms linear;
+  transition: all 120ms linear;
+}
+
+.card:hover {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+  -webkit-box-shadow: 2px 2px 5px #222;
+          box-shadow: 2px 2px 5px #222;
+}
+/*# sourceMappingURL=styles.css.map */

@@ -12,7 +12,13 @@ module.exports = sequelize => {
 				type: Sequelize.STRING,
 				allowNull: false
 			},
-			img_url: {
+			img_url_1: {
+				type: Sequelize.STRING
+			},
+			img_url_2: {
+				type: Sequelize.STRING
+			},
+			img_url_3: {
 				type: Sequelize.STRING
 			},
 			artist: {
