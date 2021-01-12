@@ -1,31 +1,14 @@
-.formContainer{
-  margin: 0 auto;
-  max-width: 60rem;
+.artistSearchContainer{
   padding: 1rem;
 }
 
-.formLabel {
-  display: none;
-}
-
-.searchInputContainer{
-  padding: 1rem;
-}
-
-.searchInputContainer input{
+.artistSearchInput {
   padding: .2rem .8rem;
   font-size: 1.4rem;
   border-radius: 5px;
   border: 1px #ddd solid;
-  width: 100%;
-}
-
-.searchInputContainer input:focus{
-  outline: none;
-}
-
-.secondaryText{
-  color: #777
+  margin-bottom: 1rem ;
+  width: 15rem;
 }
 
 .button {
@@ -35,14 +18,10 @@
   padding: .2rem .8rem;
   font-size: 1.4rem;
   transition: all 50ms linear;
+  
 }
 
 .button:hover {
   transform: scale(.98);
   background-color: coral
-}
-
-.flex{
-  display: flex;
-  
 }

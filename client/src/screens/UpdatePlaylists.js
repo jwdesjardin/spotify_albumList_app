@@ -1,12 +1,11 @@
-import React, { Fragment, useContext, useState, useEffect, useRef } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import { AuthContext } from '../context/auth';
 import axios from 'axios';
 
-import StagedAlbums from '../components/StagedAlbums';
 import ActionBar from '../components/layout/ActionBar';
-import styles from './CreateAlbumList.module.css';
-import ArtistSearch from '../components/ArtistSearch';
-import AlbumStager from '../components/AlbumStager';
+import styles from './CreatePlaylist.module.css';
+import ArtistSearch from '../components/ArtistSearch/ArtistSearch';
+import AlbumStager from '../components/AlbumStager/AlbumStager';
 
 const UpdatePlaylists = ({ history, match }) => {
 	const id = match.params.id;

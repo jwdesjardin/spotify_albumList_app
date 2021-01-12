@@ -1,7 +1,7 @@
 import React from 'react';
-import { Popover, OverlayTrigger, Button } from 'react-bootstrap';
-import styles from './AlbumTrackPopover.module.css';
-import Album from './Album';
+import { Popover, OverlayTrigger } from 'react-bootstrap';
+import styles from '../utils/Popover.module.css';
+
 import AlbumPopoverData from './AlbumPopoverData';
 
 const PlaylistAlbumsPopover = ({ playlist }) => {

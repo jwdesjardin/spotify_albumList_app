@@ -1,12 +1,12 @@
-import React, { Fragment, useState, useContext } from 'react';
-import { Popover, OverlayTrigger, Button } from 'react-bootstrap';
+import React, { useState, useContext } from 'react';
+import { Popover, OverlayTrigger } from 'react-bootstrap';
 import axios from 'axios';
-import { AuthContext } from '../context/auth';
-import styles from './AlbumTrackPopover.module.css';
+import { AuthContext } from '../../context/auth';
+import styles from '../utils/Popover.module.css';
 import PopoverData from './PopoverData';
 
 const AlbumTrackPopover = ({ value }) => {
-	const { spotifyToken, spotifyHeader } = useContext(AuthContext);
+	const { spotifyToken } = useContext(AuthContext);
 	const [ albumPopupData, setAlbumPopupData ] = useState({});
 
 	const getAlbumDetails = async ({ target }) => {

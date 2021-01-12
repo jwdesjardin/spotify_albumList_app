@@ -1,0 +1,27 @@
+.headerContainer{
+  background-color: coral;
+  
+  min-height: 30vh;
+  padding: 1rem;
+}
+
+.flex{  
+  display: flex;
+ align-items: center;
+}
+
+
+
+.title{
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.username {
+  color: #777;
+  padding-left: 1rem;
+}
+
+.headerTextBox{
+  margin-right: 2rem;
+}

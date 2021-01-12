@@ -7,7 +7,7 @@ import UserSignOut from './screens/UserSignOut';
 import Playlists from './screens/Playlists';
 import PlaylistDetail from './screens/PlaylistDetail';
 import AlbumDetail from './screens/AlbumDetail';
-import CreateAlbumList from './screens/CreateAlbumList';
+import CreatePlaylist from './screens/CreatePlaylist';
 
 import UpdatePlaylists from './screens/UpdatePlaylists';
 
@@ -15,8 +15,7 @@ import Header from './components/layout/Header';
 import NotFound from './screens/NotFound';
 import Forbidden from './screens/Forbidden';
 import UnhandledError from './screens/UnhandledError';
-import PrivateRoute from './utils/PrivateRoute';
-import SpotifySearch from './utils/SpotifySearch';
+import PrivateRoute from './components/utils/PrivateRoute';
 
 const App = () => {
 	return (
@@ -24,10 +23,12 @@ const App = () => {
 			<Header />
 			<Switch>
 				<Route exact path='/' component={Playlists} />
-				<PrivateRoute path='/albumList/create' component={CreateAlbumList} />
-				<PrivateRoute path='/playlists/:id/update' component={UpdatePlaylists} />
+				<Route exact path='/playlists/create' component={CreatePlaylist} />
 				<Route path='/playlists/:id' component={PlaylistDetail} />
-				<Route path='/album/:id' component={AlbumDetail} />
+
+				<PrivateRoute path='/playlists/:id/update' component={UpdatePlaylists} />
+
+				<PrivateRoute path='/album/:id' component={AlbumDetail} />
 				<Route path='/signin' component={UserSignIn} />
 				<Route path='/signup' component={UserSignUp} />
 				<Route path='/signout' component={UserSignOut} />

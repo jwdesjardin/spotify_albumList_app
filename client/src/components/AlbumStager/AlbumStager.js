@@ -1,7 +1,7 @@
-import React, { Fragment, useContext, useState, useEffect } from 'react';
-import { AuthContext } from '../context/auth';
+import React from 'react';
 import StagedAlbums from './StagedAlbums';
 import AlbumSearchResults from './AlbumSearchResults';
+
 import styles from './AlbumStager.module.css';
 
 const AlbumStager = ({

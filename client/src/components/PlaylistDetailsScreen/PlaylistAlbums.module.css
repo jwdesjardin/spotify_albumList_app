@@ -1,6 +1,7 @@
 .playlistListContainer {
-  display: flex;
+  display: grid;
   margin: 2rem auto 10rem;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .playlistCard {
@@ -13,4 +14,12 @@
 .albumLink a {
   margin-top: 1rem;
   
+}
+
+@media screen and (max-width: 480px) {
+  .playlistListContainer {
+    display: flex;
+    overflow-x: scroll;
+    max-width: 72rem;
+  }
 }

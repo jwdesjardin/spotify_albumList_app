@@ -1,11 +1,12 @@
-import React, { Fragment } from 'react';
-
+import React from 'react';
 import { Link } from 'react-router-dom';
+
 import styles from './AlbumListGrid.module.css';
+import utilStyles from '../utils/utils.module.css';
 
 const AlbumListGrid = ({ playlists }) => {
 	return (
-		<div className={styles.playlistGridContainer}>
+		<div className={`${utilStyles.container} ${styles.playlistGridContainer}`}>
 			{playlists &&
 				playlists.map(playlist => (
 					<Link key={playlist.id} to={`/playlists/${playlist.id}`}>
@@ -18,7 +19,7 @@ const AlbumListGrid = ({ playlists }) => {
 					</Link>
 				))}
 
-			<Link className='' to='/albumList/create'>
+			<Link className='' to='/playlists/create'>
 				<div className={styles.playlistGridItem}>
 					<div className={styles.flex} />
 					<h3 className={styles.playlistGridItemTitle}>

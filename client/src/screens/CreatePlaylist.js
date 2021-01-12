@@ -1,13 +1,14 @@
-import React, { Fragment, useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../context/auth';
 import axios from 'axios';
-import AlbumStager from '../components/AlbumStager';
-
+import AlbumStager from '../components/AlbumStager/AlbumStager';
+import { Tabs, Tab } from 'react-bootstrap';
 import ActionBar from '../components/layout/ActionBar';
-import ArtistSearch from '../components/ArtistSearch';
-import styles from './CreateAlbumList.module.css';
+import ArtistSearch from '../components/ArtistSearch/ArtistSearch';
+import styles from './CreatePlaylist.module.css';
+import AlbumSearch from '../components/AlbumSearch/AlbumSearch';
 
-const CreateAlbumList = props => {
+const CreatePlaylist = props => {
 	const { authUser, userPassword } = useContext(AuthContext);
 
 	const [ albumTitle, setAlbumTitle ] = useState('');
@@ -121,20 +122,27 @@ const CreateAlbumList = props => {
 			<div className={styles.pageContainer}>
 				<div className={styles.formContainer}>
 					<h4 className={styles.formLabel}>1. Add Title</h4>
-					<div className={styles.flex}>
+					<div className={styles.headerGrid}>
 						<div className={styles.searchInputContainer}>
-							<input
-								id='title'
-								name='title'
-								type='text'
-								className=''
-								placeholder='AlbumList title...'
-								value={albumTitle}
-								onChange={e => setAlbumTitle(e.target.value)}
-							/>
-							{authUser && (
-								<p className={styles.secondaryText}>By: {authUser.username}</p>
-							)}
+							<div className={styles.flexColumn}>
+								<div>
+									<h2 className={styles.title}>AlbumList Title</h2>
+									{authUser && (
+										<p className={styles.secondaryText}>
+											By: {authUser.username}
+										</p>
+									)}
+								</div>
+								<textarea
+									id='title'
+									name='title'
+									rows='2'
+									cols='50'
+									placeholder='AlbumList title...'
+									value={albumTitle}
+									onChange={e => setAlbumTitle(e.target.value)}
+								/>
+							</div>
 						</div>
 
 						<button className={styles.button} onClick={createAlbumListHandler}>
@@ -143,7 +151,15 @@ const CreateAlbumList = props => {
 					</div>
 
 					<h4 className={styles.formLabel}>2. Create a playlist</h4>
-					<ArtistSearch setAlbumSearchResults={setAlbumSearchResults} />
+
+					<Tabs defaultActiveKey='albumSearch' id='albumSeachTabs'>
+						<Tab eventKey='albumSearch' title='Album Search'>
+							<AlbumSearch setAlbumSearchResults={setAlbumSearchResults} />
+						</Tab>
+						<Tab eventKey='artistSearch' title='Artist Search'>
+							<ArtistSearch setAlbumSearchResults={setAlbumSearchResults} />
+						</Tab>
+					</Tabs>
 
 					<AlbumStager
 						albumSearchResults={albumSearchResults}
@@ -162,4 +178,4 @@ const CreateAlbumList = props => {
 	);
 };
 
-export default CreateAlbumList;
+export default CreatePlaylist;

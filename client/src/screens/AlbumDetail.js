@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useState, useEffect, Fragment } from 'react';
 import ActionBar from '../components/layout/ActionBar';
-import AlbumPlaylists from '../components/AlbumPlaylists';
-import AlbumHeader from '../components/AlbumHeader';
+import AlbumPlaylists from '../components/AlbumDetailsScreen/AlbumPlaylists';
+import AlbumHeader from '../components/AlbumDetailsScreen/AlbumHeader';
 
 const AlbumDetail = ({ match, history }) => {
 	const { id } = match.params;

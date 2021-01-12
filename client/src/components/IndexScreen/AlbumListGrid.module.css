@@ -46,3 +46,11 @@
 .addSymbol{
   height: 30px;
 }
+
+@media screen and (max-width: 480px) {
+  .playlistGridContainer{
+    display: flex;
+    flex-direction: column;
+    padding: .5rem 1rem 2rem;
+  }
+}

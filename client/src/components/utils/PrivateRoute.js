@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../context/auth';
+import { AuthContext } from '../../context/auth';
 import { Route, Redirect } from 'react-router-dom';
 
 // private route takes a component and other props as ...rest
 const PrivateRoute = ({ component: Component, ...rest }) => {
-	const { authUser } = useContext(AuthContext);
+	const { authUser, spotifyToken } = useContext(AuthContext);
 
 	// return a route with the props from rest spread in
 	return (

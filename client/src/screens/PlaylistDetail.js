@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import ActionBar from '../components/layout/ActionBar';
-import { Link } from 'react-router-dom';
-import Album from '../components/Album';
-import PlaylistHeader from '../components/PlaylistHeader';
-import utilStyles from '../utils/utils.module.css';
-import PlaylistAlbums from '../components/PlaylistAlbums';
+
+import PlaylistHeader from '../components/PlaylistDetailsScreen/PlaylistHeader';
+import utilStyles from '../components/utils/utils.module.css';
+import PlaylistAlbums from '../components/PlaylistDetailsScreen/PlaylistAlbums';
 const PlaylistDetail = props => {
 	const [ playlist, setPlaylist ] = useState({});
 	const id = props.match.params.id;

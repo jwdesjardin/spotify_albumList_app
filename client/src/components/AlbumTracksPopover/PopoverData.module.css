@@ -1,8 +1,11 @@
 .tracklistContainer{
   padding-right: 1rem;
+  overflow-y: scroll;
+  height: 300px;
 }
 
 .tracklist {
   list-style: none;
   padding: .5rem;
 }
+

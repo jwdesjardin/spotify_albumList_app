@@ -1,0 +1,95 @@
+.formContainer{
+  margin: 0 auto;
+  max-width: 60rem;
+  padding: 1rem;
+}
+
+.formLabel {
+  display: none;
+}
+
+.searchInputContainer{
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.title{
+  font-size: 1rem;
+  margin: .5rem;
+}
+
+.flex{
+  display: flex;
+}
+
+.headerGrid{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.searchInputContainer textarea{
+  padding: .2rem .8rem;
+  font-size: 1.4rem;
+  margin-right: 2rem;
+  border-radius: 5px;
+  border: 1px #ddd solid;
+  width: 100%;
+ 
+}
+
+.searchInputContainer input:focus{
+  outline: none;
+}
+
+.secondaryText{
+  color: #777
+}
+
+.button {
+  margin: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: transparent;
+  padding: .2rem .8rem;
+  font-size: 1.4rem;
+  transition: all 50ms linear;
+}
+
+.button:hover {
+  transform: scale(.98);
+  background-color: coral
+}
+
+.flexColumn{
+  display: flex;
+  
+}
+
+
+
+@media screen and (max-width: 480px) {
+  .searchInputContainer div textarea{
+    
+    font-size: 1rem;
+   
+    border-radius: 5px;
+    border: 1px #ddd solid;
+    width: 100%;
+  }
+
+  .flexColumn{
+    display: flex;
+    flex-direction: column; 
+  }
+
+  .button {
+    margin: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: transparent;
+    padding: .2rem .8rem;
+    font-size: 1rem;
+    transition: all 50ms linear;
+  }
+}

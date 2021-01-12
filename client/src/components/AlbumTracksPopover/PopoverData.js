@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from './PopoverData.module.css';
+import utilStyles from '../utils/utils.module.css';
 
 const PopoverData = ({ albumPopupData }) => {
 	return (
-		<div className={styles.tracklistContainer}>
+		<div className={`${utilStyles.container} ${styles.tracklistContainer}`}>
 			<ul className={styles.tracklist}>
 				{albumPopupData.tracks.items.map(track => (
 					<li key={track.id}>

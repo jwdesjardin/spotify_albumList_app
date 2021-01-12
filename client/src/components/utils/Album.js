@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import styles from './Album.module.css';
-import AlbumTrackPopover from '../components/AlbumTrackPopover';
+import AlbumTrackPopover from '../AlbumTracksPopover/AlbumTrackPopover';
 import { Link } from 'react-router-dom';
 
 const Album = ({ album, imgSize }) => {

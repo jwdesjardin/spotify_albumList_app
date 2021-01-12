@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import AlbumListGrid from '../components/AlbumListGrid';
+import AlbumListGrid from '../components/IndexScreen/AlbumListGrid';
 
 const Playlists = ({ history }) => {
 	const [ playlists, setPlaylists ] = useState([]);

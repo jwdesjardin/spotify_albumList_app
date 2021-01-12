@@ -3,7 +3,7 @@ import styles from './StagedAlbums.module.css';
 const StagedAlbums = ({ stagedAlbums, removeAlbumFromStage }) => {
 	return (
 		<div className={styles.stagedAlbumsContainer}>
-			<h2>Albums in Playlist: </h2>
+			<h2>Albums in Playlist </h2>
 			{stagedAlbums && (
 				<div className={styles.flexScroll}>
 					{stagedAlbums.map(album => (

@@ -1,8 +1,9 @@
 import React, { Fragment, useState, useContext, useEffect } from 'react';
 import { Popover, OverlayTrigger, Button } from 'react-bootstrap';
 import axios from 'axios';
-import { AuthContext } from '../context/auth';
+import { AuthContext } from '../../context/auth';
 import styles from './AlbumHeader.module.css';
+import utilStyles from '../utils/utils.module.css';
 
 const AlbumHeader = ({ album }) => {
 	const { spotifyToken, spotifyHeader } = useContext(AuthContext);
@@ -36,9 +37,9 @@ const AlbumHeader = ({ album }) => {
 
 	console.log(albumData);
 	return (
-		<div className={styles.albumHeaderContainer}>
+		<div className={`${styles.albumHeaderContainer}`}>
 			{albumData && (
-				<div className={styles.flex}>
+				<div className={`${utilStyles.container} ${styles.flex}`}>
 					<div className={styles.albumInfo}>
 						<h1>{albumData.name}</h1>
 						<img src={albumData.images && albumData.images[1]['url']} alt='' />

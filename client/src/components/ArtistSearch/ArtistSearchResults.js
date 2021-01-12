@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../context/auth';
+import { AuthContext } from '../../context/auth';
 import axios from 'axios';
 import styles from './ArtistSearchResults.module.css';
 

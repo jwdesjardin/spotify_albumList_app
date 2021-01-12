@@ -1,15 +1,17 @@
 import React from 'react';
-import AlbumTrackPopover from '../components/AlbumTrackPopover';
+import AlbumTrackPopover from '../AlbumTracksPopover/AlbumTrackPopover';
+
 import styles from './AlbumSearchResults.module.css';
 
 const AlbumSearchResults = ({ albumSearchResults, addAlbumToStage }) => {
+	console.log('albums', albumSearchResults);
 	return (
 		<div className={styles.albumSearchResultsContainer}>
-			<h2>Search Results</h2>
+			<h2>Album Results</h2>
 			<div className={styles.flexScroll}>
 				{albumSearchResults.length > 0 &&
-					albumSearchResults.map(album => (
-						<div className={styles.items} key={album.id}>
+					albumSearchResults.map((album, index) => (
+						<div className={styles.items} key={index}>
 							<div className={styles.flex}>
 								<img src={album.images[2] ? album.images[2]['url'] : ''} alt='' />
 								<div className={styles.albumDetails}>

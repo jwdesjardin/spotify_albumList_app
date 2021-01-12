@@ -1,12 +1,11 @@
 import React from 'react';
 import styles from './PlaylistAlbums.module.css';
 import utilStyles from '../utils/utils.module.css';
-import { Link } from 'react-router-dom';
-import Album from '../components/Album';
+import Album from '../utils/Album';
 
 const PlaylistAlbums = ({ playlist }) => {
 	return (
-		<div className={styles.playlistListContainer}>
+		<div className={`${utilStyles.container} ${styles.playlistListContainer}`}>
 			{playlist.Albums &&
 				playlist.Albums.map(album => (
 					<div key={album.id} className={styles.playlistCard}>
