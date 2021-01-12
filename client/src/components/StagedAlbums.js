@@ -1,25 +1,32 @@
 import React from 'react';
-import styles from './AlbumSearchResults.module.css';
+import styles from './StagedAlbums.module.css';
 const StagedAlbums = ({ stagedAlbums, removeAlbumFromStage }) => {
 	return (
-		<div className='staged-albums'>
+		<div className={styles.stagedAlbumsContainer}>
 			<h2>Albums in Playlist: </h2>
 			{stagedAlbums && (
-				<div className={styles.grid}>
+				<div className={styles.flexScroll}>
 					{stagedAlbums.map(album => (
 						<div className={styles.items} key={album.id}>
-							<img src={album.images[2] ? album.images[2]['url'] : ''} alt='' />
-							<p>Title: {album.name}</p>
-							<p>Artist: {album.artists[0]['name']}</p>
-							<p>Year: {album.release_date.substring(0, 4)}</p>
-							<button
-								className='btn btn-danger'
-								onClick={removeAlbumFromStage}
-								value={album.id}
-							>
-								{' '}
-								Remove{' '}
-							</button>
+							<div className={styles.flex}>
+								<img src={album.images[2] ? album.images[2]['url'] : ''} alt='' />
+								<div className={styles.albumDetails}>
+									<p>Title: {album.name}</p>
+									<p>Artist: {album.artists[0]['name']}</p>
+									<p>Year: {album.release_date.substring(0, 4)}</p>
+								</div>
+							</div>
+
+							<div className={styles.flex}>
+								<button
+									className={styles.button}
+									onClick={removeAlbumFromStage}
+									value={album.id}
+								>
+									{' '}
+									Remove{' '}
+								</button>
+							</div>
 						</div>
 					))}
 				</div>

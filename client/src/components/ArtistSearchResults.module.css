@@ -1,7 +1,7 @@
-.grid{
+.flexScroll{
   display: flex;
   overflow-x: scroll;
-  max-width: 90rem;
+  max-width: 72rem;
 }
 
 .gridItems {
@@ -16,6 +16,8 @@
   transition: all 120ms linear;
   
 }
+
+
 .gridItems:focus{
   outline: none;
 }

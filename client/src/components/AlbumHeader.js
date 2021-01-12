@@ -57,7 +57,7 @@ const AlbumHeader = ({ album }) => {
 									<li key={track.id}>
 										{track.track_number}
 										{'. '}
-										<a href={track.href} target='blank'>
+										<a href={track.external_urls['spotify']} target='blank'>
 											{track.name} -{' '}
 											{Math.floor(track.duration_ms / 1000 / 60)}m{' '}
 											{Math.floor((track.duration_ms / 1000) % 60)}s

@@ -1,9 +1,12 @@
 import React, { Fragment, useContext, useState, useEffect, useRef } from 'react';
 import { AuthContext } from '../context/auth';
 import axios from 'axios';
-import AlbumSearch from '../components/AlbumSearch';
+
 import StagedAlbums from '../components/StagedAlbums';
 import ActionBar from '../components/layout/ActionBar';
+import styles from './CreateAlbumList.module.css';
+import ArtistSearch from '../components/ArtistSearch';
+import AlbumStager from '../components/AlbumStager';
 
 const UpdatePlaylists = ({ history, match }) => {
 	const id = match.params.id;
@@ -12,7 +15,7 @@ const UpdatePlaylists = ({ history, match }) => {
 
 	const [ playlist, setPlaylist ] = useState({});
 
-	const [ searchResults, setSearchResults ] = useState([]);
+	const [ albumSearchResults, setAlbumSearchResults ] = useState([]);
 	const [ stagedAlbums, setStagedAlbums ] = useState([]);
 	const [ errors, setErrors ] = useState([]);
 
@@ -82,7 +85,7 @@ const UpdatePlaylists = ({ history, match }) => {
 	const addAlbumToStage = e => {
 		e.preventDefault();
 		const albumId = e.currentTarget.value;
-		const album = searchResults.filter(album => album.id === albumId);
+		const album = albumSearchResults.filter(album => album.id === albumId);
 		setStagedAlbums(prevState => setStagedAlbums([ ...prevState, ...album ]));
 
 		const duplicate = stagedAlbums.filter(album => album.id === albumId);
@@ -92,44 +95,154 @@ const UpdatePlaylists = ({ history, match }) => {
 
 	const removeAlbumFromStage = e => {
 		e.preventDefault();
+
 		const albumId = e.currentTarget.value;
 		const filteredAlbums = stagedAlbums.filter(album => album.id !== albumId);
 		setStagedAlbums([ ...filteredAlbums ]);
 	};
 
+	const updateAlbumListHandler = async e => {
+		e.preventDefault();
+		const playlistId = e.target.value;
+		//checking if each album is in db and if not creating it
+		stagedAlbums.forEach(async album => {
+			console.log(album.id);
+
+			try {
+				await axios.get(`http://localhost:5000/api/albums/${album.id}`);
+			} catch (error) {
+				console.log(error.response);
+				if (error.response.status === 404) {
+					console.log('404');
+					const body = {
+						id: album.id,
+						img_url_1: album.images[0] ? album.images[0].url : null,
+						img_url_2: album.images[1] ? album.images[1].url : null,
+						img_url_3: album.images[2] ? album.images[2].url : null,
+						artist: album.artists[0]['name'],
+						year: album.release_date.substring(0, 4),
+						title: album.name
+					};
+
+					await axios.post('http://localhost:5000/api/albums', body);
+				} else {
+					console.log('error creating albums');
+				}
+			}
+		});
+
+		// create the config object for authorization
+		const credentials = btoa(authUser.username + ':' + userPassword);
+		const basicAuth = 'Basic ' + credentials;
+		const config = {
+			headers: {
+				Authorization: basicAuth
+			}
+		};
+
+		//update title
+		const body = {
+			title: titleInput.current.value
+		};
+
+		try {
+			// post the body and config to the api; redirect to login on success
+			await axios.put(`http://localhost:5000/api/playlists/${playlistId}`, body, config);
+
+			// clear all staged albums
+
+			//get playlist id
+			const { data } = await axios.get(
+				`http://localhost:5000/api/playlists/${playlistId}`,
+				body,
+				config
+			);
+
+			//for each album delete playlist album
+			const albums = data.Albums;
+			console.log(albums);
+			for (let album of albums) {
+				console.log(album);
+				try {
+					await axios.delete(
+						`http://localhost:5000/api/playlists/${playlistId}/${album.id}`
+					);
+					console.log('deleted', album.id);
+				} catch (error) {
+					console.log('error deleting albums from playlist');
+				}
+			}
+
+			// add albums to play list
+			stagedAlbums.forEach(async album => {
+				try {
+					await axios.post(
+						`http://localhost:5000/api/playlists/${playlist.id}/${album.id}`,
+						config
+					);
+					console.log('adding', album.id);
+				} catch (error) {
+					console.log('error adding albums to playlist');
+				}
+			});
+			history.push('/');
+		} catch (error) {
+			// if error is bad request set errors in state; else show server error
+			if (error.response.status === 400) {
+				const messages =
+					error.response && error.response.data.errors
+						? error.response.data.errors
+						: error.message;
+				setErrors([ ...messages ]);
+			} else {
+				history.push('/error');
+			}
+		}
+	};
+
 	return (
-		<div>
-			<ActionBar playlist={{ UserId: null }} history={history} />
+		<div className={styles.pageContainer}>
 			{playlist && (
-				<div className='bounds course--detail'>
-					<div className='grid-66'>
-						{/* albumList title */}
-						<div className='course--header'>
-							<h4 className='course--label'>Title</h4>
-							<div>
-								<input
-									id='title'
-									name='title'
-									type='text'
-									className='input-title course--title--input'
-									placeholder='AlbumList title...'
-									defaultValue={playlist.title}
-									ref={titleInput}
-								/>
-							</div>
-							{authUser && <p>By: {authUser.username}</p>}
+				<div className={styles.formContainer}>
+					<h4 className={styles.formLabel}>1. Add Title</h4>
+					<div className={styles.flex}>
+						<div className={styles.searchInputContainer}>
+							<input
+								id='title'
+								name='title'
+								type='text'
+								className=''
+								placeholder='AlbumList title...'
+								ref={titleInput}
+								defaultValue={playlist.title}
+							/>
+							{authUser && (
+								<p className={styles.secondaryText}>By: {authUser.username}</p>
+							)}
 						</div>
 
-						<AlbumSearch
-							addAlbumToStage={addAlbumToStage}
-							searchResults={searchResults}
-							setSearchResults={setSearchResults}
-						/>
-						<StagedAlbums
-							removeAlbumFromStage={removeAlbumFromStage}
-							stagedAlbums={stagedAlbums}
-						/>
+						<button
+							className={styles.button}
+							onClick={updateAlbumListHandler}
+							value={playlist.id}
+						>
+							Update AlbumList
+						</button>
 					</div>
+
+					<h4 className={styles.formLabel}>2. Create a playlist</h4>
+					<ArtistSearch setAlbumSearchResults={setAlbumSearchResults} />
+
+					<AlbumStager
+						albumSearchResults={albumSearchResults}
+						setAlbumSearchResults={setAlbumSearchResults}
+						addAlbumToStage={addAlbumToStage}
+						removeAlbumFromStage={removeAlbumFromStage}
+						stagedAlbums={stagedAlbums}
+					/>
+
+					<div style={{ marginBottom: '7rem' }} />
+					<ActionBar playlist={{ UserId: null }} history={history} />
 				</div>
 			)}
 		</div>

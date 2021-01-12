@@ -8,7 +8,6 @@ const AlbumDetail = ({ match, history }) => {
 	const { id } = match.params;
 
 	const [ album, setAlbum ] = useState({});
-	const [ playlistDetailsList, setPlaylistDetailsList ] = useState([]);
 
 	useEffect(
 		() => {
@@ -29,15 +28,6 @@ const AlbumDetail = ({ match, history }) => {
 		history.goBack();
 	};
 
-	const togglePlaylistDetails = ({ target }) => {
-		setPlaylistDetailsList(prevList => {
-			if (prevList.includes(target.value)) {
-				return prevList.filter(tag => target.value !== tag);
-			} else {
-				return [ ...prevList, target.value ];
-			}
-		});
-	};
 	console.log(album);
 	return (
 		<div>
@@ -48,11 +38,7 @@ const AlbumDetail = ({ match, history }) => {
 					<AlbumHeader album={album} />
 
 					{/* other albums with hidden details */}
-					<AlbumPlaylists
-						togglePlaylistDetails={togglePlaylistDetails}
-						playlistDetailsList={playlistDetailsList}
-						album={album}
-					/>
+					<AlbumPlaylists album={album} />
 
 					<ActionBar playlist={{ UserId: null }} history={history} />
 

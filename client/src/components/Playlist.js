@@ -1,20 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Playlist.module.css';
+import Album from './Album';
+import PlaylistAlbumsPopover from './PlaylistAlbumsPopover';
 
+const Playlist = ({ playlist, index }) => {
+	const [ showAlbums, setShowAlbums ] = useState(false);
 
-const Playlist = ({ playlist, index, togglePlaylistDetails, playlistDetailsList }) => {
+	const toggleShowAlbums = ({ target }) => {
+		setShowAlbums(prevList => {
+			if (prevList === true) {
+				return false;
+			} else {
+				return true;
+			}
+		});
+	};
+
 	return (
-		<div className={styles.playlist}>
-		
-			<h2 className={styles.title}>
-			{index + 1}. {playlist.title}
-		</h2>
-		<p className={styles.username}>created by: {playlist.User.username}</p>
-		<p className={styles.lastChanged}>last changed: {playlist.updatedAt.substring(0, 10)}</p>
-		{}
-		<button className={styles.button}  onClick={togglePlaylistDetails} value={playlist.id} >Show albums</button>
-		
-	
+		<div className={styles.playlistContainer}>
+			<div className={styles.playlistDetails}>
+				<h2 className={styles.title}>{playlist.title}</h2>
+
+				<p>created by: {playlist.User.username}</p>
+				<p>last updated: {playlist.updatedAt.substring(0, 10)}</p>
+			</div>
+
+			<PlaylistAlbumsPopover playlist={playlist} />
 		</div>
 	);
 };

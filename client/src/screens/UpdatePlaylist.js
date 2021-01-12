@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useState, useEffect, useRef } from 'react';
 import { AuthContext } from '../context/auth';
 import axios from 'axios';
-import AlbumSearch from '../components/AlbumSearch';
+
 import StagedAlbums from '../components/StagedAlbums';
 
 const UpdatePlaylist = ({ history, match }) => {
@@ -199,12 +199,6 @@ const UpdatePlaylist = ({ history, match }) => {
 					{authUser && <p>By: {authUser.username}</p>}
 				</div>
 			</div>
-
-			<AlbumSearch
-				addAlbumToStage={addAlbumToStage}
-				searchResults={searchResults}
-				setSearchResults={setSearchResults}
-			/>
 
 			<StagedAlbums removeAlbumFromStage={removeAlbumFromStage} stagedAlbums={stagedAlbums} />
 

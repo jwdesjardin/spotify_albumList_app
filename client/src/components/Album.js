@@ -3,12 +3,12 @@ import styles from './Album.module.css';
 import AlbumTrackPopover from '../components/AlbumTrackPopover';
 import { Link } from 'react-router-dom';
 
-const Album = ({ album }) => {
+const Album = ({ album, imgSize }) => {
 	return (
 		<div className={styles.albumContainer}>
 			<div>
 				<Link to={`/album/${album.id}`}>
-					<img src={album.img_url_2} alt='' />
+					<img src={imgSize === 3 ? album.img_url_3 : album.img_url_2} alt='' />
 				</Link>
 			</div>
 

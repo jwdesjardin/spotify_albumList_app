@@ -1,0 +1,48 @@
+.formContainer{
+  margin: 0 auto;
+  max-width: 60rem;
+  padding: 1rem;
+}
+
+.formLabel {
+  display: none;
+}
+
+.searchInputContainer{
+  padding: 1rem;
+}
+
+.searchInputContainer input{
+  padding: .2rem .8rem;
+  font-size: 1.4rem;
+  border-radius: 5px;
+  border: 1px #ddd solid;
+  width: 100%;
+}
+
+.searchInputContainer input:focus{
+  outline: none;
+}
+
+.secondaryText{
+  color: #777
+}
+
+.button {
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: transparent;
+  padding: .2rem .8rem;
+  font-size: 1.4rem;
+  transition: all 50ms linear;
+}
+
+.button:hover {
+  transform: scale(.98);
+  background-color: coral
+}
+
+.flex{
+  display: flex;
+  
+}

@@ -1,0 +1,10 @@
+.collageContainer{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+}
+
+.imgDiv {
+  margin:.02rem
+}
+

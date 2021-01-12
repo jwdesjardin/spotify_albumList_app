@@ -1,0 +1,48 @@
+.playlistGridContainer{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.playlistGridContainer a{
+ text-decoration: none;
+}
+
+.playlistGridItem{
+  box-shadow: 1px 1px 2px #333;
+  padding: 1rem 2rem;
+  margin: .5rem;
+  border-radius: 5px;
+  transition: 50ms all linear;
+  background-color: coral;
+  min-height: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+
+.playlistGridItem:hover {
+  transform: scale(.99);
+  box-shadow: 2px 2px 2px #333;
+}
+
+.playlistGridItemTitle{
+  font-size: 1.8rem;
+  color: black;
+  display: flex;
+  align-items: center;
+  
+}
+.playlistGridItemTitle svg{
+  margin-right: .5rem;
+  
+}
+
+
+.playlistGridItemUser{
+  color: #888;
+}
+
+.addSymbol{
+  height: 30px;
+}

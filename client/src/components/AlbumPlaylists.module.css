@@ -1,5 +1,7 @@
 .albumPlaylistsContainer{
-  margin: 0 auto;
+  margin: 0 auto 5rem;
+  padding: 1rem;
+
 }
 
 .flex {

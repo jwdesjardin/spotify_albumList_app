@@ -1,14 +1,17 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../context/auth';
 import axios from 'axios';
-import AlbumSearch from '../components/AlbumSearch';
-import StagedAlbums from '../components/StagedAlbums';
+import AlbumStager from '../components/AlbumStager';
+
 import ActionBar from '../components/layout/ActionBar';
+import ArtistSearch from '../components/ArtistSearch';
+import styles from './CreateAlbumList.module.css';
+
 const CreateAlbumList = props => {
 	const { authUser, userPassword } = useContext(AuthContext);
 
 	const [ albumTitle, setAlbumTitle ] = useState('');
-	const [ searchResults, setSearchResults ] = useState([]);
+	const [ albumSearchResults, setAlbumSearchResults ] = useState([]);
 	const [ stagedAlbums, setStagedAlbums ] = useState([]);
 	const [ errors, setErrors ] = useState([]);
 
@@ -20,7 +23,7 @@ const CreateAlbumList = props => {
 	const addAlbumToStage = e => {
 		e.preventDefault();
 		const albumId = e.currentTarget.value;
-		const album = searchResults.filter(album => album.id === albumId);
+		const album = albumSearchResults.filter(album => album.id === albumId);
 		setStagedAlbums(prevState => setStagedAlbums([ ...prevState, ...album ]));
 
 		const duplicate = stagedAlbums.filter(album => album.id === albumId);
@@ -114,44 +117,48 @@ const CreateAlbumList = props => {
 	};
 
 	return (
-		<Fragment>
-			<ActionBar playlist={{ UserId: null }} history={props.history} />
-			<div className='grid-66'>
-				<div className='course--header'>
-					<h4 className='course--label'>Title</h4>
-					<div>
-						<input
-							id='title'
-							name='title'
-							type='text'
-							className='input-title course--title--input'
-							placeholder='AlbumList title...'
-							value={albumTitle}
-							onChange={e => setAlbumTitle(e.target.value)}
-						/>
+		<div>
+			<div className={styles.pageContainer}>
+				<div className={styles.formContainer}>
+					<h4 className={styles.formLabel}>1. Add Title</h4>
+					<div className={styles.flex}>
+						<div className={styles.searchInputContainer}>
+							<input
+								id='title'
+								name='title'
+								type='text'
+								className=''
+								placeholder='AlbumList title...'
+								value={albumTitle}
+								onChange={e => setAlbumTitle(e.target.value)}
+							/>
+							{authUser && (
+								<p className={styles.secondaryText}>By: {authUser.username}</p>
+							)}
+						</div>
+
+						<button className={styles.button} onClick={createAlbumListHandler}>
+							Create AlbumList
+						</button>
 					</div>
-					{authUser && <p>By: {authUser.username}</p>}
+
+					<h4 className={styles.formLabel}>2. Create a playlist</h4>
+					<ArtistSearch setAlbumSearchResults={setAlbumSearchResults} />
+
+					<AlbumStager
+						albumSearchResults={albumSearchResults}
+						setAlbumSearchResults={setAlbumSearchResults}
+						addAlbumToStage={addAlbumToStage}
+						removeAlbumFromStage={removeAlbumFromStage}
+						stagedAlbums={stagedAlbums}
+					/>
+
+					<div style={{ marginBottom: '7rem' }} />
 				</div>
 			</div>
 
-			<AlbumSearch
-				addAlbumToStage={addAlbumToStage}
-				searchResults={searchResults}
-				setSearchResults={setSearchResults}
-			/>
-
-			<StagedAlbums removeAlbumFromStage={removeAlbumFromStage} stagedAlbums={stagedAlbums} />
-
-			<div className='flex'>
-				<button className='button button-primary' onClick={createAlbumListHandler}>
-					Create AlbumList
-				</button>
-
-				<p>
-					<em>Title - "{albumTitle}"</em>
-				</p>
-			</div>
-		</Fragment>
+			<ActionBar playlist={{ UserId: null }} history={props.history} />
+		</div>
 	);
 };
 

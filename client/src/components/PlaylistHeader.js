@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './PlaylistHeader.module.css';
+import ImageCollage from './ImageCollage';
 
 const PlaylistHeader = ({ playlist }) => {
 	console.log(playlist);
@@ -11,6 +12,9 @@ const PlaylistHeader = ({ playlist }) => {
 					{playlist.User && (
 						<p className={styles.username}>By: {playlist.User.username}</p>
 					)}
+				</div>
+				<div class={styles.flexColumn}>
+					<ImageCollage playlist={playlist} />
 				</div>
 			</div>
 		</div>

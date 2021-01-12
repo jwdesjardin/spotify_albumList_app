@@ -1,0 +1,27 @@
+.artistSearchContainer{
+  padding: 1rem;
+}
+
+.artistSearchInput {
+  padding: .2rem .8rem;
+  font-size: 1.4rem;
+  border-radius: 5px;
+  border: 1px #ddd solid;
+  margin-bottom: 1rem ;
+  width: 15rem;
+}
+
+.button {
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: transparent;
+  padding: .2rem .8rem;
+  font-size: 1.4rem;
+  transition: all 50ms linear;
+  
+}
+
+.button:hover {
+  transform: scale(.98);
+  background-color: coral
+}

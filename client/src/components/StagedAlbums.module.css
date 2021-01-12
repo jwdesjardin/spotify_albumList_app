@@ -1,16 +1,9 @@
-.albumSearchResultsContainer{
-  
+.stagedAlbumsContainer{
+ 
   padding: 1rem;
+ 
 }
 
-
-
-.grid{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  max-width: 90rem;
-  margin: 2rem 0 5rem;
-}
 
 .flex{
   display: flex;
@@ -36,7 +29,7 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   border: 1px solid black;
   align-items: center;
   transition: all 120ms linear;
