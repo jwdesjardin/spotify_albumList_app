@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './StagedAlbums.module.css';
-const StagedAlbums = ({ stagedAlbums, removeAlbumFromStage }) => {
+const StagedAlbums = ({ stagedAlbums, removeAlbumFromStage, notitle }) => {
 	return (
 		<div className={styles.stagedAlbumsContainer}>
-			<h2>Albums in Playlist </h2>
+			{!notitle && <h2>Albums in Playlist </h2>}
 			{stagedAlbums && (
 				<div className={styles.flexScroll}>
 					{stagedAlbums.map(album => (

@@ -24,10 +24,9 @@ const App = () => {
 			<Switch>
 				<Route exact path='/' component={Playlists} />
 				<Route exact path='/playlists/create' component={CreatePlaylist} />
-				<Route path='/playlists/:id' component={PlaylistDetail} />
 
 				<PrivateRoute path='/playlists/:id/update' component={UpdatePlaylists} />
-
+				<Route path='/playlists/:id' component={PlaylistDetail} />
 				<PrivateRoute path='/album/:id' component={AlbumDetail} />
 				<Route path='/signin' component={UserSignIn} />
 				<Route path='/signup' component={UserSignUp} />

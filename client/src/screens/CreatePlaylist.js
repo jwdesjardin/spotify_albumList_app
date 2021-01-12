@@ -173,7 +173,15 @@ const CreatePlaylist = props => {
 				</div>
 			</div>
 
-			<ActionBar playlist={{ UserId: null }} history={props.history} />
+			{stagedAlbums && (
+				<ActionBar
+					stagedAlbums={stagedAlbums}
+					removeAlbumFromStage={removeAlbumFromStage}
+					createPlaylistAlbums={stagedAlbums.length > 0 ? true : false}
+					playlist={{ UserId: null }}
+					history={props.history}
+				/>
+			)}
 		</div>
 	);
 };

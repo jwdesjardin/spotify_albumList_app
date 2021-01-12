@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import styles from './ImageCollage.module.css';
 
 const ImageCollage = ({ playlist }) => {
+	console.log(playlist, playlist.Albums);
 	return (
 		<div className={styles.collageContainer}>
 			{playlist &&

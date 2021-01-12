@@ -44,22 +44,21 @@ const ArtistSearchResults = ({ artistData, setAlbumSearchResults }) => {
 		<div>
 			<h2>Artist Results</h2>
 			<div className={styles.flexScroll}>
-				{artistData.length > 0 &&
-					artistData.map(artist => (
-						<button
-							onClick={searchAlbumHandler}
-							value={artist.id}
-							className={styles.gridItems}
-							key={artist.id}
-						>
-							<img src={artist.images[2] ? artist.images[2]['url'] : ''} alt='' />
+				{artistData.map(artist => (
+					<button
+						onClick={searchAlbumHandler}
+						value={artist.id}
+						className={styles.gridItems}
+						key={artist.id}
+					>
+						<img src={artist.images[2] ? artist.images[2]['url'] : ''} alt='' />
 
-							<p>Artist: {artist.name}</p>
-							{/* <button onClick={searchAlbumHandler} value={artist.id}>
+						<p>Artist: {artist.name}</p>
+						{/* <button onClick={searchAlbumHandler} value={artist.id}>
 							See Albums
 						</button> */}
-						</button>
-					))}
+					</button>
+				))}
 			</div>
 		</div>
 	);

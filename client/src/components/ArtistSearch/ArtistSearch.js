@@ -59,10 +59,12 @@ const ArtistSearch = ({ setAlbumSearchResults, location }) => {
 						</button>
 					</form>
 
-					<ArtistSearchResults
-						artistData={artistData}
-						setAlbumSearchResults={setAlbumSearchResults}
-					/>
+					{artistData.length > 0 && (
+						<ArtistSearchResults
+							artistData={artistData}
+							setAlbumSearchResults={setAlbumSearchResults}
+						/>
+					)}
 				</div>
 			) : (
 				<Redirect

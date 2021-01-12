@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import AlbumListGrid from '../components/IndexScreen/AlbumListGrid';
-
+import ActionBar from '../components/layout/ActionBar';
 const Playlists = ({ history }) => {
 	const [ playlists, setPlaylists ] = useState([]);
 
@@ -29,7 +29,7 @@ const Playlists = ({ history }) => {
 		<section className='albumList'>
 			{/* albumlist grid*/}
 			<AlbumListGrid playlists={playlists} />
-
+			<ActionBar createPlaylist={true} playlist={{ UserId: null }} history={history} />
 			{/* new album list button */}
 		</section>
 	);

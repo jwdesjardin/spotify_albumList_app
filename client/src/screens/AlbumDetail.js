@@ -40,7 +40,11 @@ const AlbumDetail = ({ match, history }) => {
 					{/* other albums with hidden details */}
 					<AlbumPlaylists album={album} />
 
-					<ActionBar playlist={{ UserId: null }} history={history} />
+					<ActionBar
+						createPlaylist={true}
+						playlist={{ UserId: null }}
+						history={history}
+					/>
 
 					{/* go back button */}
 					<div>

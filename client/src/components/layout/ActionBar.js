@@ -3,8 +3,17 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/auth';
 import axios from 'axios';
 import styles from './ActionBar.module.css';
+import CreatePlaylistAlbumsPopover from './CreatePlaylistAlbumsPopover';
 
-const ActionBar = ({ playlist, history }) => {
+const ActionBar = ({
+	playlist,
+	history,
+	createPlaylist,
+	createPlaylistAlbums,
+	removeAlbumFromStage,
+	stagedAlbums,
+	editPage
+}) => {
 	const { authUser, userPassword } = useContext(AuthContext);
 
 	const onDeleteClick = async e => {
@@ -44,22 +53,43 @@ const ActionBar = ({ playlist, history }) => {
 
 	return (
 		<div className={styles.actionBarContainer}>
+			{createPlaylistAlbums && (
+				<div>
+					<CreatePlaylistAlbumsPopover
+						stagedAlbums={stagedAlbums}
+						removeAlbumFromStage={removeAlbumFromStage}
+					/>
+				</div>
+			)}
+
 			<div className={styles.flexStartAlign}>
-				{/* if user is lgged in and they own this course show update and delete */}
-				{authUser &&
-				authUser.id === playlist.UserId && (
-					<span>
+				<div>
+					{createPlaylist && (
+						<Link className='btn btn-warning' to='/playlists/create'>
+							New Playlist
+						</Link>
+					)}
+				</div>
+				<div className={styles.flexStartAlign}>
+					{/* if user is lgged in and they own this course show update and delete */}
+					{authUser && authUser.id === playlist.UserId ? editPage === true ? (
 						<Link className='btn btn-primary' onClick={onDeleteClick} to='/'>
 							Delete Playlist
 						</Link>
+					) : (
 						<Link className='btn btn-primary' to={`/playlists/${playlist.id}/update`}>
 							Edit Playlist
 						</Link>
-					</span>
-				)}
-				<Link className='btn btn-secondary' to='/'>
-					Return to List
-				</Link>
+					) : (
+						''
+					)}
+				</div>
+				<div>
+					{' '}
+					<Link className='btn btn-secondary' to='/'>
+						Return to List
+					</Link>
+				</div>
 			</div>
 		</div>
 	);

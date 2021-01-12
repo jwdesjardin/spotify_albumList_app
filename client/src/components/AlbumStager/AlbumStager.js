@@ -18,8 +18,6 @@ const AlbumStager = ({
 				albumSearchResults={albumSearchResults}
 				addAlbumToStage={addAlbumToStage}
 			/>
-
-			<StagedAlbums removeAlbumFromStage={removeAlbumFromStage} stagedAlbums={stagedAlbums} />
 		</div>
 	);
 };

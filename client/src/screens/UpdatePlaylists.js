@@ -241,7 +241,14 @@ const UpdatePlaylists = ({ history, match }) => {
 					/>
 
 					<div style={{ marginBottom: '7rem' }} />
-					<ActionBar playlist={{ UserId: null }} history={history} />
+					<ActionBar
+						playlist={{ UserId: null }}
+						history={history}
+						editPage={true}
+						stagedAlbums={stagedAlbums}
+						removeAlbumFromStage={removeAlbumFromStage}
+						createPlaylistAlbums={stagedAlbums.length > 0 ? true : false}
+					/>
 				</div>
 			)}
 		</div>

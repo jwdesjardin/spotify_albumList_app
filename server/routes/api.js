@@ -197,6 +197,10 @@ router.get(
 			attributes: { exclude: [ 'createdAt', 'updatedAt' ] },
 			include: [
 				{
+					model: Album,
+					attributes: { exclude: [ 'createdAt', 'updatedAt' ] }
+				},
+				{
 					model: User
 				}
 			]

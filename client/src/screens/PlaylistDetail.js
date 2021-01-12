@@ -39,7 +39,7 @@ const PlaylistDetail = props => {
 
 	return (
 		<div className='albumListDetail'>
-			<ActionBar playlist={playlist} history={props.history} />
+			<ActionBar createPlaylist={true} playlist={playlist} history={props.history} />
 
 			{playlist && (
 				<div className={utilStyles.sectionContainer}>
