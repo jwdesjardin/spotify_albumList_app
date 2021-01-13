@@ -4,7 +4,7 @@ import { AuthContext } from '../../context/auth';
 import axios from 'axios';
 import styles from './ActionBar.module.css';
 import CreatePlaylistAlbumsPopover from './CreatePlaylistAlbumsPopover';
-
+import utilStyles from '../utils/utils.module.css';
 const ActionBar = ({
 	playlist,
 	history,
@@ -12,7 +12,9 @@ const ActionBar = ({
 	createPlaylistAlbums,
 	removeAlbumFromStage,
 	stagedAlbums,
-	editPage
+	playlist_id,
+	albumTitle,
+	setErrors
 }) => {
 	const { authUser, userPassword } = useContext(AuthContext);
 
@@ -53,42 +55,54 @@ const ActionBar = ({
 
 	return (
 		<div className={styles.actionBarContainer}>
-			{createPlaylistAlbums && (
-				<div>
-					<CreatePlaylistAlbumsPopover
-						stagedAlbums={stagedAlbums}
-						removeAlbumFromStage={removeAlbumFromStage}
-					/>
-				</div>
-			)}
-
-			<div className={styles.flexStartAlign}>
-				<div>
-					{createPlaylist && (
-						<Link className='btn btn-warning' to='/playlists/create'>
-							New Playlist
-						</Link>
-					)}
-				</div>
+			<div className={utilStyles.container}>
 				<div className={styles.flexStartAlign}>
-					{/* if user is lgged in and they own this course show update and delete */}
-					{authUser && authUser.id === playlist.UserId ? editPage === true ? (
-						<Link className='btn btn-primary' onClick={onDeleteClick} to='/'>
-							Delete Playlist
-						</Link>
-					) : (
-						<Link className='btn btn-primary' to={`/playlists/${playlist.id}/update`}>
-							Edit Playlist
-						</Link>
-					) : (
-						''
+					{/* playlist cart */}
+					{createPlaylistAlbums && (
+						<div>
+							<CreatePlaylistAlbumsPopover
+								stagedAlbums={stagedAlbums}
+								removeAlbumFromStage={removeAlbumFromStage}
+								setErrors={setErrors}
+								albumTitle={albumTitle}
+								history={history}
+								playlist_id={playlist_id}
+							/>
+						</div>
 					)}
-				</div>
-				<div>
-					{' '}
-					<Link className='btn btn-secondary' to='/'>
-						Return to List
-					</Link>
+
+					<div>
+						{createPlaylist && (
+							<Link className='btn btn-warning' to='/playlists/create'>
+								New Playlist
+							</Link>
+						)}
+					</div>
+
+					<div className={styles.flexStartAlign}>
+						{/* if user is lgged in and they own this course show update and delete */}
+						{authUser && authUser.id === playlist.UserId ? playlist_id > 0 ? (
+							<Link className='btn btn-primary' onClick={onDeleteClick} to='/'>
+								Delete Playlist
+							</Link>
+						) : (
+							<Link
+								className='btn btn-primary'
+								to={`/playlists/${playlist.id}/update`}
+							>
+								Edit Playlist
+							</Link>
+						) : (
+							''
+						)}
+					</div>
+
+					<div>
+						{' '}
+						<Link className='btn btn-secondary' to='/'>
+							Return to List
+						</Link>
+					</div>
 				</div>
 			</div>
 		</div>

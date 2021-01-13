@@ -1,10 +1,12 @@
 // _buttons.scss
 .btn {
   display: inline-block;
-  border-radius: 5px;
+  color: $light-text;
   padding: 8px 20px;
   margin: 3px;
   transition: $global-transistion;
+  background-color: transparent;
+  border: 2px solid $primary-color;
   &:hover {
     transform: scale(.98);
   }
@@ -13,17 +15,24 @@
 .btn-primary {
   @extend .btn;
   @include set-background(lighten($primary-color, 15%));
+  border: 2px solid $primary-color;
 }
 
 .btn-secondary {
   @extend .btn;
-  @include set-background($secondary-color);
+  border: 2px solid $secondary-color;
 }
 
-.btn-dark {
+.btn-info {
   @extend .btn;
-  @include set-background($dark-color);
+  border: 2px solid $third-color;
 }
+
+.btn-warning {
+  @extend .btn;
+  border: 2px solid $icon-color;
+}
+
 
 .btn-outline-primary {
   @extend .btn;

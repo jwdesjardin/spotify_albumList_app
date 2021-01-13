@@ -11,25 +11,29 @@ const AlbumSearchResults = ({ albumSearchResults, addAlbumToStage }) => {
 			<div className={styles.flexScroll}>
 				{albumSearchResults.length > 0 &&
 					albumSearchResults.map((album, index) => (
-						<div className={styles.items} key={index}>
-							<div className={styles.flex}>
+						<div className={``} key={index}>
+							<div className={`${styles.flexColumn} card`}>
 								<img src={album.images[2] ? album.images[2]['url'] : ''} alt='' />
-								<div className={styles.albumDetails}>
-									<p>Title: {album.name}</p>
-									<p>Artist: {album.artists[0]['name']}</p>
-									<p>Year: {album.release_date.substring(0, 4)}</p>
-								</div>
-							</div>
 
-							<div className={styles.flex}>
-								<button
-									className={styles.button}
-									onClick={addAlbumToStage}
-									value={album.id}
-								>
-									Add To Playlist
-								</button>
-								<AlbumTrackPopover value={album.id} />
+								<div className={styles.albumDetails}>
+									<p>
+										<strong>{album.name}</strong>
+									</p>
+									<p>
+										{album.artists[0]['name']}({album.release_date.substring(0, 4)})
+									</p>
+								</div>
+
+								<div className={styles.flex}>
+									<button
+										className={styles.button}
+										onClick={addAlbumToStage}
+										value={album.id}
+									>
+										Add To Playlist
+									</button>
+									<AlbumTrackPopover value={album.id} />
+								</div>
 							</div>
 						</div>
 					))}

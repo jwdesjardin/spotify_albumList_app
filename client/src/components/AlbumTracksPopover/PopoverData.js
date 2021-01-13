@@ -8,8 +8,10 @@ const PopoverData = ({ albumPopupData }) => {
 			<ul className={styles.tracklist}>
 				{albumPopupData.tracks.items.map(track => (
 					<li key={track.id}>
-						{track.track_number}
-						{'. '}
+						<strong>
+							{track.track_number}
+							{'. '}
+						</strong>
 						<a href={track.href} target='blank'>
 							{track.name} - {Math.floor(track.duration_ms / 1000 / 60)}m{' '}
 							{Math.floor((track.duration_ms / 1000) % 60)}s

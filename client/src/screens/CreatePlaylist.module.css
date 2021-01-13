@@ -1,3 +1,5 @@
+
+
 .formContainer{
   margin: 0 auto;
   max-width: 60rem;
@@ -11,7 +13,7 @@
 .searchInputContainer{
   display: flex;
   align-items: center;
-  padding: 1rem;
+ margin-bottom: 1rem;
 }
 
 .title{
@@ -23,18 +25,15 @@
   display: flex;
 }
 
-.headerGrid{
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-}
 
-.searchInputContainer textarea{
+
+.searchInputContainer input{
   padding: .2rem .8rem;
   font-size: 1.4rem;
-  margin-right: 2rem;
+ 
   border-radius: 5px;
   border: 1px #ddd solid;
-  width: 100%;
+ 
  
 }
 
@@ -66,10 +65,14 @@
   
 }
 
+.tabDark{
+  color: tomato;
+}
+
 
 
 @media screen and (max-width: 480px) {
-  .searchInputContainer div textarea{
+  .searchInputContainer div input{
     
     font-size: 1rem;
    

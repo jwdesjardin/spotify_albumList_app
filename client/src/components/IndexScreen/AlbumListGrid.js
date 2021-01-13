@@ -7,11 +7,11 @@ import ImageCollage from '../utils/ImageCollage';
 
 const AlbumListGrid = ({ playlists }) => {
 	return (
-		<div className={`${utilStyles.container} ${styles.playlistGridContainer}`}>
+		<div className={`container containerExt ${styles.playlistGridContainer}`}>
 			{playlists &&
 				playlists.map(playlist => (
 					<Link key={playlist.id} to={`/playlists/${playlist.id}`}>
-						<div className={styles.playlistGridItem}>
+						<div className={`${styles.playlistGridItem} card flexRow`}>
 							<div>
 								<h3 className={styles.playlistGridItemTitle}>{playlist.title}</h3>
 								<h4 className={styles.playlistGridItemUser}>

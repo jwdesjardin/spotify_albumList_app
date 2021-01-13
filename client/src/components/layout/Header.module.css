@@ -1,4 +1,4 @@
-.navContainer {
+/* .navContainer {
  background-color:bisque;
  padding: 1rem;
 }
@@ -22,4 +22,8 @@
 .navLinks a {
   border: 1px solid black;
   margin: 0 1rem;
+} */
+
+.containerMargin{
+  margin-bottom: 0;
 }

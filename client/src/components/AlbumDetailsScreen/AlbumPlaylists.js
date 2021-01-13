@@ -9,9 +9,7 @@ const AlbumPlaylists = ({ album }) => {
 			<div className={`${utilStyles.container} ${styles.flex}`}>
 				{album.Playlists &&
 					album.Playlists.map((playlist, index) => (
-						<Fragment key={index + 1}>
-							<Playlist playlist={playlist} index={index} />
-						</Fragment>
+						<Playlist key={index + 1} playlist={playlist} index={index} />
 					))}
 			</div>
 		</div>

@@ -16,4 +16,9 @@
     overflow-x: scroll;
     max-width: 72rem;
   }
+  .flex {
+    display: grid;
+    margin: 2rem auto 4rem;
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

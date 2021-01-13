@@ -7,11 +7,7 @@ const PlaylistAlbums = ({ playlist }) => {
 	return (
 		<div className={`${utilStyles.container} ${styles.playlistListContainer}`}>
 			{playlist.Albums &&
-				playlist.Albums.map(album => (
-					<div key={album.id} className={styles.playlistCard}>
-						<Album album={album} />
-					</div>
-				))}
+				playlist.Albums.map(album => <Album key={album.id} album={album} />)}
 		</div>
 	);
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PopoverAlbums from './PopoverAlbums';
+import PopoverAlbums from '../utils/PopoverAlbums';
 import styles from './AlbumPopoverData.module.css';
 
 const AlbumPopoverData = ({ playlist }) => {

@@ -6,6 +6,7 @@ import ActionBar from '../components/layout/ActionBar';
 import styles from './CreatePlaylist.module.css';
 import ArtistSearch from '../components/ArtistSearch/ArtistSearch';
 import AlbumStager from '../components/AlbumStager/AlbumStager';
+import StagedAlbums from '../components/AlbumStager/StagedAlbums';
 
 const UpdatePlaylists = ({ history, match }) => {
 	const id = match.params.id;
@@ -13,16 +14,16 @@ const UpdatePlaylists = ({ history, match }) => {
 	const { authUser, userPassword, spotifyToken } = useContext(AuthContext);
 
 	const [ playlist, setPlaylist ] = useState({});
+	const [ playlistTitle, setPlaylistTitle ] = useState('');
 
 	const [ albumSearchResults, setAlbumSearchResults ] = useState([]);
 	const [ stagedAlbums, setStagedAlbums ] = useState([]);
 	const [ errors, setErrors ] = useState([]);
 
-	const titleInput = useRef('');
-
 	const addPlaylistAlbumsToStage = async data => {
 		setStagedAlbums([]);
 		setPlaylist(data);
+		setPlaylistTitle(data.title);
 		const albums = data.Albums;
 
 		for (let album of albums) {
@@ -130,60 +131,7 @@ const UpdatePlaylists = ({ history, match }) => {
 			}
 		});
 
-		// create the config object for authorization
-		const credentials = btoa(authUser.username + ':' + userPassword);
-		const basicAuth = 'Basic ' + credentials;
-		const config = {
-			headers: {
-				Authorization: basicAuth
-			}
-		};
-
-		//update title
-		const body = {
-			title: titleInput.current.value
-		};
-
 		try {
-			// post the body and config to the api; redirect to login on success
-			await axios.put(`http://localhost:5000/api/playlists/${playlistId}`, body, config);
-
-			// clear all staged albums
-
-			//get playlist id
-			const { data } = await axios.get(
-				`http://localhost:5000/api/playlists/${playlistId}`,
-				body,
-				config
-			);
-
-			//for each album delete playlist album
-			const albums = data.Albums;
-			console.log(albums);
-			for (let album of albums) {
-				console.log(album);
-				try {
-					await axios.delete(
-						`http://localhost:5000/api/playlists/${playlistId}/${album.id}`
-					);
-					console.log('deleted', album.id);
-				} catch (error) {
-					console.log('error deleting albums from playlist');
-				}
-			}
-
-			// add albums to play list
-			stagedAlbums.forEach(async album => {
-				try {
-					await axios.post(
-						`http://localhost:5000/api/playlists/${playlist.id}/${album.id}`,
-						config
-					);
-					console.log('adding', album.id);
-				} catch (error) {
-					console.log('error adding albums to playlist');
-				}
-			});
 			history.push('/');
 		} catch (error) {
 			// if error is bad request set errors in state; else show server error
@@ -212,7 +160,8 @@ const UpdatePlaylists = ({ history, match }) => {
 								type='text'
 								className=''
 								placeholder='AlbumList title...'
-								ref={titleInput}
+								value={playlistTitle}
+								onChange={e => setPlaylistTitle(e.target.value)}
 								defaultValue={playlist.title}
 							/>
 							{authUser && (
@@ -241,15 +190,19 @@ const UpdatePlaylists = ({ history, match }) => {
 					/>
 
 					<div style={{ marginBottom: '7rem' }} />
-					<ActionBar
-						playlist={{ UserId: null }}
-						history={history}
-						editPage={true}
-						stagedAlbums={stagedAlbums}
-						removeAlbumFromStage={removeAlbumFromStage}
-						createPlaylistAlbums={stagedAlbums.length > 0 ? true : false}
-					/>
 				</div>
+			)}
+			{stagedAlbums && (
+				<ActionBar
+					playlist={{ UserId: null }}
+					history={history}
+					playlist_id={playlist.id}
+					setErrors={setErrors}
+					albumTitle={playlistTitle}
+					stagedAlbums={stagedAlbums}
+					removeAlbumFromStage={removeAlbumFromStage}
+					createPlaylistAlbums={stagedAlbums.length > 0 ? true : false}
+				/>
 			)}
 		</div>
 	);

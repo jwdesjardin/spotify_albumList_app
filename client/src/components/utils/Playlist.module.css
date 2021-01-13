@@ -4,14 +4,41 @@
   margin: 1rem;
   background-color: #ddd;
   display: flex;
-  align-items: center;
+  
+  justify-content: center;
   border-radius: 5px;
 }
 
 
 .title{
 font-size: 1.8rem;
+margin-bottom: 0;
 }
-.playlistDetails {
- padding: .5rem;
+
+.albumDetails{
+  margin-bottom: 1rem;
+}
+
+.flexRow{
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  width: 100%;
+}
+.imgCollage{
+  margin: .2rem;
+}
+
+.imgCollage:hover {
+  transform: scale(.99);
+}
+
+@media screen and (max-width: 480px) {
+  .imgCollage{
+    display: none;
+  }
+  .flexRow{
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
 }

@@ -1,6 +1,7 @@
 .albumContainer{
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   padding: .5rem;
 }
 
@@ -13,4 +14,20 @@
 
 .title{
   font-size: 1rem;
+}
+
+.times{
+  color: red;
+  transition: 120ms linear all;
+  background-color: transparent;
+  border: none;
+
+}
+
+.times:hover{
+  color: black;
+}
+
+.times:focus {
+  outline: none;
 }

@@ -1,0 +1,7 @@
+.albumCount {
+  background-color: rgb(236, 236, 76);
+  font-weight: bold;
+  color: black;
+  border-radius: 50%;
+  padding: .2rem .5rem;
+}

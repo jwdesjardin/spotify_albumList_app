@@ -1,5 +1,5 @@
 .headerContainer{
-  background-color: coral;
+  background-color: var(--primary-color);
   
   min-height: 30vh;
   padding: 1rem;

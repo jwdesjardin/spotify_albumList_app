@@ -19,3 +19,12 @@
   font-size: 1.6rem;
   margin-bottom: .5rem;
 }
+
+.img{
+  transistion: 120ms linear all;
+}
+
+.img:hover {
+  transform: scale(.99)
+
+}

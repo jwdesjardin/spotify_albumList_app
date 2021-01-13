@@ -43,7 +43,7 @@ const AlbumTrackPopover = ({ value }) => {
 
 	return (
 		<div className={styles.buttonContainer}>
-			<OverlayTrigger trigger='click' placement='top' overlay={popover}>
+			<OverlayTrigger trigger='click' placement='top' rootClose={true} overlay={popover}>
 				<button onClick={getAlbumDetails} value={value} className={styles.button}>
 					Tracks
 				</button>

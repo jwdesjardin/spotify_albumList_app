@@ -1,5 +1,6 @@
 import React from 'react';
 import { Popover, OverlayTrigger } from 'react-bootstrap';
+
 import styles from '../utils/Popover.module.css';
 
 import AlbumPopoverData from './AlbumPopoverData';
@@ -16,7 +17,7 @@ const PlaylistAlbumsPopover = ({ playlist }) => {
 
 	return (
 		<div className={styles.buttonContainer}>
-			<OverlayTrigger trigger='click' placement='top' overlay={popover}>
+			<OverlayTrigger trigger='click' placement='top' rootClose={true} overlay={popover}>
 				<button className={styles.button}>Albums</button>
 			</OverlayTrigger>
 		</div>

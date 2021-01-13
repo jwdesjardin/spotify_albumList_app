@@ -18,29 +18,27 @@
 }
 
 .flexScroll{
-  display: flex;
-  overflow-x: scroll;
-  max-width: 72rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  
 }
 
-.albumDetails{
-  padding-left: .5rem;
-  min-width: 8rem;
-}
-
-.items {
-  background-color: #ddd;
-  box-shadow: 1px 1px 2px black;
-  padding: 1rem;
-  margin: .5rem;
-  border-radius: 10px;
+.flexColumn{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   border: 1px solid black;
   align-items: center;
-  transition: all 120ms linear;
 }
+
+.albumDetails{
+  margin-top: 1rem;
+  padding-left: .5rem;
+  min-width: 8rem;
+  min-height: 6rem;
+}
+
+
 
 .buttonContainer {
   display: flex;
@@ -57,4 +55,12 @@
 
 .button:hover {
   box-shadow: 1px 1px 2px black;
+}
+
+@media screen and (max-width: 480px) {
+  .flexScroll{
+    display: flex;
+    overflow-x: scroll;
+    max-width: 72rem;
+  }
 }
