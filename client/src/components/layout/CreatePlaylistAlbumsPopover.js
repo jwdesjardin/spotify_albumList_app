@@ -26,14 +26,8 @@ const CreatePlaylistAlbumsPopover = ({
 			}
 		};
 
-		const trimmedSplitTitle = albumTitle
-			.trim()
-			.split(' ')
-			.map(word => word[0].toUpperCase() + word.slice(1, word.length))
-			.join(' ');
-
 		const body = {
-			title: trimmedSplitTitle
+			title: albumTitle
 		};
 
 		// post the body and config to the api; redirect to login on success
@@ -182,14 +176,14 @@ const CreatePlaylistAlbumsPopover = ({
 						))}
 					{playlist_id > 0 ? (
 						<button
-							className='btn btn-primary'
+							className='btn btn-third-fill'
 							value={playlist_id}
 							onClick={updatePlaylistHandler}
 						>
 							Update Playlist
 						</button>
 					) : (
-						<button className='btn btn-third' onClick={updatePlaylistHandler}>
+						<button className='btn btn-secondary-fill' onClick={updatePlaylistHandler}>
 							Create Playlist
 						</button>
 					)}
@@ -204,7 +198,7 @@ const CreatePlaylistAlbumsPopover = ({
 		<div className={styles.buttonContainer}>
 			<OverlayTrigger trigger='click' placement='top' rootClose={true} overlay={popover}>
 				{stagedAlbums && (
-					<button className='btn btn-info'>
+					<button className='btn btn-primary-fill'>
 						Playlist <span className={styles.albumCount}>{stagedAlbums.length}</span>
 					</button>
 				)}

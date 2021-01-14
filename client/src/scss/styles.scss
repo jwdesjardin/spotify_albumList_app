@@ -44,11 +44,23 @@ body {
 
 a{
   color: $dark-text;
+  font-weight: bold;
 }
 
 a:hover {
-  text-decoration: none;
+  
   color: $dark-text;
   font-weight: bold;
   
+}
+
+.textInput{
+  font-size: 1rem;
+  padding: .5rem .8rem;
+  border-radius: 5px;
+  border: 1px solid #aeaeae
+}
+
+img{
+  border-radius: 5px;
 }

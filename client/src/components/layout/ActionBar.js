@@ -73,7 +73,7 @@ const ActionBar = ({
 
 					<div>
 						{createPlaylist && (
-							<Link className='btn btn-warning' to='/playlists/create'>
+							<Link className='btn btn-secondary-dark' to='/playlists/create'>
 								New Playlist
 							</Link>
 						)}
@@ -82,12 +82,12 @@ const ActionBar = ({
 					<div className={styles.flexStartAlign}>
 						{/* if user is lgged in and they own this course show update and delete */}
 						{authUser && authUser.id === playlist.UserId ? playlist_id > 0 ? (
-							<Link className='btn btn-primary' onClick={onDeleteClick} to='/'>
+							<Link className='btn btn-third-primary' onClick={onDeleteClick} to='/'>
 								Delete Playlist
 							</Link>
 						) : (
 							<Link
-								className='btn btn-primary'
+								className='btn btn-third-dark'
 								to={`/playlists/${playlist.id}/update`}
 							>
 								Edit Playlist
@@ -95,13 +95,6 @@ const ActionBar = ({
 						) : (
 							''
 						)}
-					</div>
-
-					<div>
-						{' '}
-						<Link className='btn btn-secondary' to='/'>
-							Return to List
-						</Link>
 					</div>
 				</div>
 			</div>

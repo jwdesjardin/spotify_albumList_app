@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../context/auth';
+import styles from './UserSignUp.module.css';
 
 const UserSignUp = props => {
 	const { actions } = useContext(AuthContext);
@@ -46,10 +47,10 @@ const UserSignUp = props => {
 	};
 
 	return (
-		<div className='bounds'>
-			<div className='grid-33 centered signin'>
+		<div className={styles.signupContainer}>
+			<div className={styles.flexColumnCenter}>
 				<h1>Sign Up</h1>
-				<div>
+				<div className={styles.formContainer}>
 					{/* show errors if there are any */}
 					{errors.length > 0 && (
 						<div>
@@ -63,38 +64,45 @@ const UserSignUp = props => {
 					)}
 					{/* sign up form */}
 					<form>
-						<div>
+						<div className={styles.inputContainer}>
 							<input
 								id='username'
 								name='username'
+								className='textInput'
 								type='text'
 								placeholder='Username'
 								ref={usernameInput}
 							/>
 						</div>
-						<div>
+						<div className={styles.inputContainer}>
 							<input
 								id='password'
 								name='password'
+								className='textInput'
 								type='password'
 								placeholder='Password'
 								ref={passwordInput}
 							/>
 						</div>
-						<div>
+						<div className={styles.inputContainer}>
 							<input
 								id='confirmPassword'
 								name='confirmPassword'
+								className='textInput'
 								type='password'
 								placeholder='Confirm Password'
 								ref={confirmPasswordInput}
 							/>
 						</div>
-						<div className='grid-100 pad-bottom'>
-							<button className='button' onClick={signUpHandler} type='submit'>
+						<div className={styles.buttonContainer}>
+							<button
+								className='btn btn-third-fill'
+								onClick={signUpHandler}
+								type='submit'
+							>
 								Sign Up
 							</button>
-							<button className='button button-secondary' onClick={cancelHandler}>
+							<button className='btn btn-third' onClick={cancelHandler}>
 								Cancel
 							</button>
 						</div>

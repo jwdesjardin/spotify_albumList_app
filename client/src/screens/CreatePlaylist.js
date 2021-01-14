@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../context/auth';
-import axios from 'axios';
+
 import AlbumStager from '../components/AlbumStager/AlbumStager';
 import { Tabs, Tab } from 'react-bootstrap';
 import ActionBar from '../components/layout/ActionBar';
@@ -10,16 +10,18 @@ import AlbumSearch from '../components/AlbumSearch/AlbumSearch';
 
 const CreatePlaylist = props => {
 	const { authUser, userPassword } = useContext(AuthContext);
-
 	const [ albumTitle, setAlbumTitle ] = useState('');
+	const [ trimmedTitle, setTrimmedTitle ] = useState('');
 	const [ albumSearchResults, setAlbumSearchResults ] = useState([]);
 	const [ stagedAlbums, setStagedAlbums ] = useState([]);
 	const [ errors, setErrors ] = useState([]);
 
-	const cancelHandler = event => {
-		event.preventDefault();
-		props.history.goBack();
-	};
+	useEffect(
+		() => {
+			setTrimmedTitle(trimTitle(albumTitle));
+		},
+		[ albumTitle ]
+	);
 
 	const addAlbumToStage = e => {
 		e.preventDefault();
@@ -37,6 +39,21 @@ const CreatePlaylist = props => {
 		const albumId = e.currentTarget.value;
 		const filteredAlbums = stagedAlbums.filter(album => album.id !== albumId);
 		setStagedAlbums([ ...filteredAlbums ]);
+	};
+
+	const trimTitle = albumTitle => {
+		let trimmed;
+
+		if (albumTitle.length > 0) {
+			trimmed = albumTitle
+				.trim()
+				.split(' ')
+				.map(word => word[0].toUpperCase() + word.slice(1, word.length))
+				.join(' ');
+		} else {
+			trimmed = '';
+		}
+		return trimmed;
 	};
 
 	return (
@@ -100,7 +117,7 @@ const CreatePlaylist = props => {
 					playlist={{ UserId: null }}
 					history={props.history}
 					setErrors={setErrors}
-					albumTitle={albumTitle}
+					albumTitle={trimmedTitle}
 				/>
 			)}
 		</div>

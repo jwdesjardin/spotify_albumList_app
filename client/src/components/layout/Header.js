@@ -10,8 +10,6 @@ import { Navbar, Container, NavDropdown } from 'react-bootstrap';
 const Header = () => {
 	const { authUser } = useContext(AuthContext);
 
-	const logoutHandler = () => {};
-
 	return (
 		<header>
 			<Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
@@ -25,9 +23,7 @@ const Header = () => {
 							{authUser ? (
 								<NavDropdown title={authUser.username} id='username'>
 									<LinkContainer to='/signout'>
-										<NavDropdown.Item onClick={logoutHandler}>
-											Logout
-										</NavDropdown.Item>
+										<NavDropdown.Item>Logout</NavDropdown.Item>
 									</LinkContainer>
 								</NavDropdown>
 							) : (
@@ -37,6 +33,12 @@ const Header = () => {
 									</Nav.Link>
 								</LinkContainer>
 							)}
+							<LinkContainer to='/'>
+								<Nav.Link>Playlists</Nav.Link>
+							</LinkContainer>
+							<LinkContainer to='/playlists/create'>
+								<Nav.Link>Create a Playlist</Nav.Link>
+							</LinkContainer>
 						</Nav>
 					</Navbar.Collapse>
 				</Container>

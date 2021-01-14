@@ -1,0 +1,29 @@
+.signupContainer{
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+}
+
+
+.flexColumnCenter{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.formContainer {
+  margin: 1rem 0;
+  
+}
+
+.inputContainer {
+  margin: .5rem 0;
+  
+}
+
+.buttonContainer {
+  margin: .5rem 0;
+  display: flex;
+  align-items: center;
+}
