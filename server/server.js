@@ -3,14 +3,16 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const dotenv = require('dotenv');
-// variable to enable global error logging
-const enableGlobalErrorLogging = process.env.ENABLE_GLOBAL_ERROR_LOGGING === 'true';
+const path = require('path');
 
 // create the Express app
 const app = express();
 dotenv.config();
 // setup morgan which gives us http request logging
-app.use(morgan('dev'));
+if (process.env.NODE_ENV === 'development') {
+	app.use(morgan('dev'));
+}
+
 app.use(cors());
 app.use(express.json());
 
@@ -19,7 +21,7 @@ app.use(express.json());
 	const db = require('./models/index');
 
 	try {
-		const response = await db.sequelize.authenticate();
+		await db.sequelize.authenticate();
 		console.log('connection successfully established');
 	} catch (err) {
 		console.log('ERROR in establishing connection');
@@ -32,13 +34,21 @@ const apiRoutes = require('./routes/api');
 
 app.use('/api', apiRoutes);
 
-// setup a friendly greeting for the root route
-app.get('/', (req, res) => {
-	res.json({
-		message:
-			'Welcome to the REST API project! Head to "/api/courses" to check out the course list'
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static(path.join(__dirname, '/client/build')));
+
+	app.get('*', (req, res) =>
+		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+	);
+} else {
+	// setup a friendly greeting for the root route
+	app.get('/', (req, res) => {
+		res.json({
+			message:
+				'Welcome to the REST API project! Head to "/api/courses" to check out the course list'
+		});
 	});
-});
+}
 
 // send 404 if no other route matched
 app.use((req, res) => {

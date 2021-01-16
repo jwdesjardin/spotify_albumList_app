@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm start --prefix client\"",
-    "server": "node server/server.js",
-    "devserver": "nodemon server/server.js",
-    "dev": "concurrently \"npm run devserver\" \"npm start --prefix client\""
+    "start": "node server/server.js",
+    "server": "nodemon server/server.js",
+    "dev": "concurrently \"npm run server\" \"npm start --prefix client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
