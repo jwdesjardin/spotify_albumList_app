@@ -67,7 +67,7 @@ const UpdatePlaylists = ({ history, match }) => {
 				try {
 					// get course detail from api
 					console.log(id);
-					const { data } = await axios.get(`http://localhost:5000/api/playlists/${id}`);
+					const { data } = await axios.get(`/api/playlists/${id}`);
 					if (data) {
 						// if the logged in user does not match the course fetched
 						console.log(data);

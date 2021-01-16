@@ -28,7 +28,7 @@ export const Provider = props => {
 
 		try {
 			// sumbit request with auth and get user data from api
-			const response = await axios.get('http://localhost:5000/api/users', config);
+			const response = await axios.get('/api/users', config);
 
 			// if we get a user set the user to state and localStorage
 			if (response.status === 200) {
@@ -37,7 +37,7 @@ export const Provider = props => {
 				localStorage.setItem('user', JSON.stringify(response.data));
 				localStorage.setItem('password', JSON.stringify(password));
 
-				const { data } = await axios.get('http://localhost:5000/api/spotify', config);
+				const { data } = await axios.get('/api/spotify', config);
 
 				console.log('setting token ', data.access_token);
 				const { access_token } = data;
@@ -66,7 +66,7 @@ export const Provider = props => {
 	const createUser = async body => {
 		try {
 			// post body to api
-			await axios.post('http://localhost:5000/api/users', body);
+			await axios.post('/api/users', body);
 		} catch (error) {
 			// if error is bad request send errors; if reused email send message
 			if (error.response.status === 400) {

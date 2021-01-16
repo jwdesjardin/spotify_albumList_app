@@ -15,7 +15,7 @@ const PlaylistDetail = props => {
 				console.log('yellow');
 				try {
 					// get data from api/courses/id; setCourse with data
-					const { data } = await axios.get(`http://localhost:5000/api/playlists/${id}`);
+					const { data } = await axios.get(`/api/playlists/${id}`);
 
 					if (data) {
 						console.log(data);

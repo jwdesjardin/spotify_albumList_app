@@ -30,10 +30,7 @@ const ActionBar = ({
 
 		try {
 			// send delete request with auth to api
-			const response = await axios.delete(
-				`http://localhost:5000/api/playlists/${playlist.id}`,
-				config
-			);
+			const response = await axios.delete(`/api/playlists/${playlist.id}`, config);
 
 			// if response is 204 redirect to courses
 			if (response.status === 204) {

@@ -31,20 +31,13 @@ const CreatePlaylistAlbumsPopover = ({
 		};
 
 		// post the body and config to the api; redirect to login on success
-		const createdPlaylist = await axios.post(
-			'http://localhost:5000/api/playlists',
-			body,
-			config
-		);
+		const createdPlaylist = await axios.post('/api/playlists', body, config);
 
 		console.log(createdPlaylist);
 		// add albums to play list
 		stagedAlbums.forEach(async album => {
 			try {
-				await axios.post(
-					`http://localhost:5000/api/playlists/${createdPlaylist.data.id}/${album.id}`,
-					config
-				);
+				await axios.post(`/api/playlists/${createdPlaylist.data.id}/${album.id}`, config);
 			} catch (error) {
 				console.log('error adding albums to playlist');
 			}
@@ -72,16 +65,12 @@ const CreatePlaylistAlbumsPopover = ({
 		};
 
 		// post the body and config to the api; redirect to login on success
-		await axios.put(`http://localhost:5000/api/playlists/${playlistId}`, body, config);
+		await axios.put(`/api/playlists/${playlistId}`, body, config);
 
 		// clear all staged albums
 
 		//get playlist id
-		const { data } = await axios.get(
-			`http://localhost:5000/api/playlists/${playlistId}`,
-			body,
-			config
-		);
+		const { data } = await axios.get(`/api/playlists/${playlistId}`, body, config);
 
 		//for each album delete playlist album
 		const albums = data.Albums;
@@ -89,7 +78,7 @@ const CreatePlaylistAlbumsPopover = ({
 		for (let album of albums) {
 			console.log(album);
 			try {
-				await axios.delete(`http://localhost:5000/api/playlists/${playlistId}/${album.id}`);
+				await axios.delete(`/api/playlists/${playlistId}/${album.id}`);
 				console.log('deleted', album.id);
 			} catch (error) {
 				console.log('error deleting albums from playlist');
@@ -99,10 +88,7 @@ const CreatePlaylistAlbumsPopover = ({
 		// add albums to play list
 		stagedAlbums.forEach(async album => {
 			try {
-				await axios.post(
-					`http://localhost:5000/api/playlists/${playlistId}/${album.id}`,
-					config
-				);
+				await axios.post(`/api/playlists/${playlistId}/${album.id}`, config);
 				console.log('adding', album.id);
 			} catch (error) {
 				console.log('error adding albums to playlist');
@@ -118,7 +104,7 @@ const CreatePlaylistAlbumsPopover = ({
 			console.log(album.id);
 
 			try {
-				await axios.get(`http://localhost:5000/api/albums/${album.id}`);
+				await axios.get(`/api/albums/${album.id}`);
 			} catch (error) {
 				console.log(error.response);
 				if (error.response.status === 404) {
@@ -133,7 +119,7 @@ const CreatePlaylistAlbumsPopover = ({
 						title: album.name
 					};
 
-					await axios.post('http://localhost:5000/api/albums', body);
+					await axios.post('/api/albums', body);
 				} else {
 					console.log('error creating albums');
 				}

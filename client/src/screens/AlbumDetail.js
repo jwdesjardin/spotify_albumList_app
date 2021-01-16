@@ -13,7 +13,7 @@ const AlbumDetail = ({ match, history }) => {
 		() => {
 			const asyncFunc = async () => {
 				try {
-					const { data } = await axios.get(`http://localhost:5000/api/albums/${id}`);
+					const { data } = await axios.get(`/api/albums/${id}`);
 					setAlbum(data);
 				} catch (error) {
 					console.log('error getting album');
