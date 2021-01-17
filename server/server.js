@@ -1,16 +1,13 @@
+'use strict';
+
 // load modules
 const express = require('express');
 const morgan = require('morgan');
 
-const dotenv = require('dotenv');
 const path = require('path');
+const dotenv = require('dotenv');
 
 dotenv.config();
-
-// setup morgan which gives us http request logging
-if (process.env.NODE_ENV === 'development') {
-	app.use(morgan('dev'));
-}
 
 // TODO setup your api routes here
 (async () => {
@@ -28,6 +25,11 @@ if (process.env.NODE_ENV === 'development') {
 
 // create the Express app
 const app = express();
+
+// setup morgan which gives us http request logging
+if (process.env.NODE_ENV === 'development') {
+	app.use(morgan('dev'));
+}
 
 app.use(express.json());
 
