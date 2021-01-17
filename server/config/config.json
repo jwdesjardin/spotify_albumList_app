@@ -1,0 +1,21 @@
+{
+  "development": {
+    "username": "hnumijrxjcuhpf",
+    "password": "005e14f8a634923c679a998db6f5b4e75ecdaa0f600515baf0818080ea66b5b9",
+    "database": "d60gmdj8jrbgck",
+    "host": "ec2-52-204-113-104.compute-1.amazonaws.com",
+    "dialect": "postgres"
+  },
+  "production": {
+    "dialect": "postgres",
+    "use_env_variable": "DATABASE_URL"
+  },
+  "test": {
+    "username": "hnumijrxjcuhpf",
+    "password": "005e14f8a634923c679a998db6f5b4e75ecdaa0f600515baf0818080ea66b5b9",
+    "database": "d60gmdj8jrbgck",
+    "host": "ec2-52-204-113-104.compute-1.amazonaws.com",
+    "dialect": "postgres"
+  }
+  
+}

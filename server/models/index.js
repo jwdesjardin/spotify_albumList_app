@@ -9,7 +9,9 @@ const db = {};
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
 	dialect: 'postgres',
-	protocol: 'postgres'
+	protocol: 'postgres',
+	native: true,
+	ssl: true
 });
 
 fs
