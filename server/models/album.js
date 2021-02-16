@@ -5,8 +5,9 @@ module.exports = sequelize => {
 	Album.init(
 		{
 			id: {
-				type: Sequelize.STRING,
-				primaryKey: true
+				type: Sequelize.INTEGER,
+				primaryKey: true,
+				autoIncrement: true
 			},
 			title: {
 				type: Sequelize.STRING,
